@@ -2,7 +2,7 @@ package dataTier.domenModel.owner;
 
 import java.util.List;
 
-import dataTier.domenModel.passport.Pasport;
+import dataTier.domenModel.passport.Passport;
 
 public interface Owner {
 
@@ -18,7 +18,7 @@ public interface Owner {
 	public String getAddres();
 	public void setAddres(String addres);
 
-	public List<Pasport> getFields();
-	public void setFields(List<Pasport> fields);
+	public List<Passport> getFields();
+	public void setFields(List<Passport> fields);
 	
 }

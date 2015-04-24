@@ -5,7 +5,7 @@ import org.joda.time.LocalDate;
 
 import dataTier.domenModel.ActionEvent.PassportEvent;
 import dataTier.domenModel.owner.Owner;
-import dataTier.domenModel.passport.Pasport;
+import dataTier.domenModel.passport.Passport;
 
 public class DeleteFieldEvent implements PassportEvent {
 
@@ -29,7 +29,7 @@ public class DeleteFieldEvent implements PassportEvent {
 		return null;
 	}
 
-	public Pasport getObject() {
+	public Passport getPassport() {
 		// TODO Auto-generated method stub
 		return null;
 	}

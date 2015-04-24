@@ -3,20 +3,38 @@ package dataTier.domenModel.owner.organization;
 import java.util.List;
 
 import dataTier.domenModel.owner.Owner;
-import dataTier.domenModel.passport.Pasport;
+import dataTier.domenModel.passport.Passport;
 
 public class Organization implements Owner{
 	
 	private int id;
 	
+	
+	/*
+	 * Название организации
+	 */
 	private String name;
 	
-	private int INN;
 	
+	/*
+	 * ИНН организации
+	 */
+	private int inn;
+	
+	
+	/*
+	 * Адресс организации
+	 */
 	private String Addres;
 	
-	private List<Pasport> fields;
+	/*
+	 * Список всех полей данной организации
+	 */
+	private List<Passport> fields;
 
+	
+	
+	//Геттеры и сеттеры
 	public int getId() {
 		return id;
 	}
@@ -34,11 +52,11 @@ public class Organization implements Owner{
 	}
 
 	public int getINN() {
-		return INN;
+		return inn;
 	}
 
 	public void setINN(int iNN) {
-		INN = iNN;
+		inn = iNN;
 	}
 
 	public String getAddres() {
@@ -49,11 +67,11 @@ public class Organization implements Owner{
 		Addres = addres;
 	}
 
-	public List<Pasport> getFields() {
+	public List<Passport> getFields() {
 		return fields;
 	}
 
-	public void setFields(List<Pasport> fields) {
+	public void setFields(List<Passport> fields) {
 		this.fields = fields;
 	}
 

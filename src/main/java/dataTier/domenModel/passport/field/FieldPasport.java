@@ -1,14 +1,14 @@
 package dataTier.domenModel.passport.field;
 
 import dataTier.domenModel.owner.Owner;
-import dataTier.domenModel.passport.Pasport;
+import dataTier.domenModel.passport.Passport;
 
-public class FieldPasport implements Pasport {
+public class FieldPasport implements Passport {
 	
 	/*
 	 * Id поля
 	 */
-	private int ID;
+	private int id;
 	
 	 /*
 	  * Организация-владелец поля
@@ -40,11 +40,13 @@ public class FieldPasport implements Pasport {
 	 */
 	private String comment;
 	
+	
+	//Геттеры и сеттеры
 	public int getID() {
-		return ID;
+		return id;
 	}
 	public void setID(int id) {
-		this.ID = id;
+		this.id = id;
 	}
 	
 	public Owner getOwner() {

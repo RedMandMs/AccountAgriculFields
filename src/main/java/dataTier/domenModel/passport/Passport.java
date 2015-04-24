@@ -2,7 +2,7 @@ package dataTier.domenModel.passport;
 
 import dataTier.domenModel.owner.Owner;
 
-public interface Pasport {
+public interface Passport {
 	
 	public int getID();
 	public void setID(int id);

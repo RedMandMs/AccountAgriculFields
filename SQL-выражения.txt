@@ -1,0 +1,15 @@
+Создание таблицы field_table
+CREATE TABLE field_table
+   (id int PRIMARY KEY NOT NULL IDENTITY(1,1),
+    id_organization int NOT NULL,
+	region nvarchar(30) NOT NULL,
+    cadastr_number int Not NULL UNIQUE,
+    area int NOT NULL, 
+	type_field varchar(50) NOT NULL,
+	comment text)
+GO
+
+
+_____________________________________________
+
+

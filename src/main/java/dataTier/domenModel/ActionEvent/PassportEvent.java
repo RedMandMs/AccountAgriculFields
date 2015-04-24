@@ -4,7 +4,7 @@ import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 
 import dataTier.domenModel.owner.Owner;
-import dataTier.domenModel.passport.Pasport;
+import dataTier.domenModel.passport.Passport;
 
 public interface PassportEvent {
 	
@@ -16,7 +16,7 @@ public interface PassportEvent {
 	
 	public Owner getAothor();
 	
-	public Pasport getObject();
+	public Passport getPassport();
 	
 	public DateTime getDataTime();
 	
