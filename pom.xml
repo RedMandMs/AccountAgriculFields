@@ -6,4 +6,11 @@
   <packaging>war</packaging>
   <name>AccountAgriculFields</name>
   <description>accounting agricultural fields</description>
+  <dependencies>
+  	<dependency>
+  		<groupId>joda-time</groupId>
+  		<artifactId>joda-time</artifactId>
+  		<version>2.7</version>
+  	</dependency>
+  </dependencies>
 </project>

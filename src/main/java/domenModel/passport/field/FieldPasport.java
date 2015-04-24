@@ -1,8 +1,9 @@
-package domenModel.fieldPassport;
+package domenModel.passport.field;
 
-import domenModel.organizations.OrganizationInt;
+import domenModel.owner.Owner;
+import domenModel.passport.Pasport;
 
-public class FieldIml implements FieldInt {
+public class FieldPasport implements Pasport {
 	
 	/*
 	 * Id поля
@@ -12,12 +13,12 @@ public class FieldIml implements FieldInt {
 	 /*
 	  * Организация-владелец поля
 	  */
-	private OrganizationInt owner;
+	private Owner owner;
 	
 	/*
 	 * Регионр расположения поля
 	 */
-	private FieldRegion region;
+	private String region;
 	
 	/*
 	 * Кадастровый номер поля
@@ -32,7 +33,7 @@ public class FieldIml implements FieldInt {
 	/*
 	 * Тип поля
 	 */
-	private FieldType type;
+	private String type;
 	
 	/*
 	 * комментарий к полю
@@ -45,16 +46,16 @@ public class FieldIml implements FieldInt {
 	public void setID(int id) {
 		this.ID = id;
 	}
-	public OrganizationInt getOwner() {
+	public Owner getOwner() {
 		return owner;
 	}
-	public void setOwner(OrganizationInt owner) {
+	public void setOwner(Owner owner) {
 		this.owner = owner;
 	}
-	public FieldRegion getRegion() {
+	public String getRegion() {
 		return region;
 	}
-	public void setRegion(FieldRegion region) {
+	public void setRegion(String region) {
 		this.region = region;
 	}
 	public int getCadastrNumber() {
@@ -69,10 +70,10 @@ public class FieldIml implements FieldInt {
 	public void setArea(double area) {
 		this.area = area;
 	}
-	public FieldType getType() {
+	public String getType() {
 		return type;
 	}
-	public void setType(FieldType type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 	public String getComment() {

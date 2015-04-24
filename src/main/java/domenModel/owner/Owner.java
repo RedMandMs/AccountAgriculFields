@@ -1,10 +1,10 @@
-package domenModel.organizations;
+package domenModel.owner;
 
 import java.util.List;
 
-import domenModel.fieldPassport.FieldInt;
+import domenModel.passport.Pasport;
 
-public interface OrganizationInt {
+public interface Owner {
 
 	public int getId();
 	public void setId(int id);
@@ -18,7 +18,7 @@ public interface OrganizationInt {
 	public String getAddres();
 	public void setAddres(String addres);
 
-	public List<FieldInt> getFields();
-	public void setFields(List<FieldInt> fields);
+	public List<Pasport> getFields();
+	public void setFields(List<Pasport> fields);
 	
 }
