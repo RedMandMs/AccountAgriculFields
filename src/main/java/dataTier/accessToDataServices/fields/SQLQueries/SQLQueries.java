@@ -18,6 +18,6 @@ public interface SQLQueries {
 	public String reviewPassport();
 	
 	public String reviewAllPassports();
-	public String findPassports();
+	public String findPassports(Map<String, String> info);
 	
 }

@@ -7,8 +7,8 @@ public interface Passport {
 	public int getID();
 	public void setID(int id);
 	
-	public Owner getOwner();
-	public void setOwner(Owner owner);
+	public int getIdOwner();
+	public void setIdOwner(int idOwner);
 	
 	public String getRegion();
 	public void setRegion(String region);

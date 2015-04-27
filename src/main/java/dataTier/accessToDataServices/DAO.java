@@ -1,5 +1,6 @@
 package dataTier.accessToDataServices;
 
+import java.util.List;
 import java.util.Map;
 
 import dataTier.domenModel.owner.Owner;
@@ -17,7 +18,7 @@ public interface DAO {
 	public void editFieldsPassport(Map<String,String> info);
 	public Passport reviewPassport(Map<String,String> info);
 	
-	public Passport [] reviewAllPassports();
-	public Passport [] findPassports(Map<String,String> info);
+	public List<Passport> reviewAllPassports();
+	public List<Passport> findPassports(Map<String,String> info);
 	
 }

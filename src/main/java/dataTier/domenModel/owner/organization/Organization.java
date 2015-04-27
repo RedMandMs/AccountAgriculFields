@@ -7,8 +7,19 @@ import dataTier.domenModel.passport.Passport;
 
 public class Organization implements Owner{
 	
-	private int id;
 	
+	public Organization(int id, String name, int inn, String addres) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.inn = inn;
+		this.addres = addres;
+	}
+
+	/*
+	 * id организации
+	 */
+	private int id;
 	
 	/*
 	 * Название организации
@@ -25,7 +36,7 @@ public class Organization implements Owner{
 	/*
 	 * Адресс организации
 	 */
-	private String Addres;
+	private String addres;
 	
 	/*
 	 * Список всех полей данной организации
@@ -60,11 +71,11 @@ public class Organization implements Owner{
 	}
 
 	public String getAddres() {
-		return Addres;
+		return addres;
 	}
 
 	public void setAddres(String addres) {
-		Addres = addres;
+		this.addres = addres;
 	}
 
 	public List<Passport> getFields() {

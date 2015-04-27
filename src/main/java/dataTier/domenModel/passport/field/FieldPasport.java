@@ -5,6 +5,17 @@ import dataTier.domenModel.passport.Passport;
 
 public class FieldPasport implements Passport {
 	
+	public FieldPasport(int id, int idOwner, String region, int cadastrNumber,
+			double area, String type, String comment) {
+		super();
+		this.id = id;
+		this.idOwner = idOwner;
+		this.region = region;
+		this.cadastrNumber = cadastrNumber;
+		this.area = area;
+		this.type = type;
+		this.comment = comment;
+	}
 	/*
 	 * Id поля
 	 */
@@ -13,7 +24,7 @@ public class FieldPasport implements Passport {
 	 /*
 	  * Организация-владелец поля
 	  */
-	private Owner owner;
+	private int idOwner;
 	
 	/*
 	 * Регионр расположения поля
@@ -49,11 +60,11 @@ public class FieldPasport implements Passport {
 		this.id = id;
 	}
 	
-	public Owner getOwner() {
-		return owner;
+	public int getIdOwner() {
+		return idOwner;
 	}
-	public void setOwner(Owner owner) {
-		this.owner = owner;
+	public void setIdOwner(int idOwner) {
+		this.idOwner = idOwner;
 	}
 	public String getRegion() {
 		return region;
