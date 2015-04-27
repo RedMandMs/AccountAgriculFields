@@ -2,22 +2,58 @@ package dataTier.accessToDataServices.fields.SQLQueries;
 
 import java.util.Map;
 
-import dataTier.domenModel.owner.Owner;
-import dataTier.domenModel.passport.Passport;
-
 public interface SQLQueries {
 
+	/*
+	 * Создание владельца
+	 */
 	public String createOwner();
+	
+	/*
+	 * Удаление владельца
+	 */
 	public String deleteOwner();
-	public String editOwner(Map<String, String> info);
+	
+	/*
+	 * Редактировать владельца
+	 */
+	public String editOwner(Map<String,String> info);
+	
+	/*
+	 * Просмотреть владельца
+	 */
 	public String reviewOwner();
 	
+	
+	
+	/*
+	 * Создание паспорта
+	 */
 	public String createPassport();
+	
+	/*
+	 * Удаление паспорта
+	 */
 	public String deletePassport();
-	public String editFieldsPassport(Map<String, String> info);
+	
+	/*
+	 * Редактирование паспорта
+	 */
+	public String editFieldsPassport(Map<String,String> info);
+	
+	/*
+	 * Просмотр паспорта
+	*/
 	public String reviewPassport();
 	
+	/*
+	 * Просмотр всех пасспортов
+	 */
 	public String reviewAllPassports();
-	public String findPassports(Map<String, String> info);
+	
+	/*
+	 * Поиск паспорта
+	 */
+	public String findPassports(Map<String,String> info);
 	
 }

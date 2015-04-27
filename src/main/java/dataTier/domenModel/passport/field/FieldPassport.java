@@ -1,6 +1,5 @@
 package dataTier.domenModel.passport.field;
 
-import dataTier.domenModel.owner.Owner;
 import dataTier.domenModel.passport.Passport;
 
 public class FieldPassport implements Passport {
