@@ -1,5 +1,6 @@
 package dataTier.accessToDataServices.fields;
 
+import java.sql.Types;
 import java.util.List;
 import java.util.Map;
 
@@ -15,12 +16,11 @@ import dataTier.accessToDataServices.fields.rowMappers.PassportRowMapper;
 import dataTier.domenModel.owner.Owner;
 import dataTier.domenModel.owner.organization.Organization;
 import dataTier.domenModel.passport.Passport;
-import dataTier.domenModel.passport.field.FieldPasport;
 
 public class AdminSpringDAO implements DAO {
 
 	public AdminSpringDAO(){
-		
+		postConstruct();
 	}
 	
 	SQLQueries sqlQueries = new SQLServerQueries();
@@ -41,8 +41,9 @@ public class AdminSpringDAO implements DAO {
 	}
 	
 	public void createOwner(Map<String, String> info) {
-		Object [] values = new Object[]{info.get("id"), info.get("name"), info.get("inn"), info.get("address_org")};
-		jdbcTemplate.update(sqlQueries.createOwner(), values, organizationRowMapper);
+		Object [] values = new Object[]{(String) info.get("name"), Integer.valueOf(info.get("inn")), (String) info.get("address_org")};
+		String sqlQuery = sqlQueries.createOwner();
+		jdbcTemplate.update(sqlQuery, values);
 	}
 
 	public void deleteOwner(Map<String, String> info) {
@@ -51,12 +52,13 @@ public class AdminSpringDAO implements DAO {
 	}
 
 	public void editOwner(Map<String, String> info) {
-		Object [] values = new Object[]{info.get("field"), info.get("value"), info.get("id")};
-		jdbcTemplate.update(sqlQueries.editOwner(), values);
+		Object [] values = new Object[]{info.get("value"), info.get("id")};
+		String sqlQuery = sqlQueries.editOwner(info);
+		jdbcTemplate.update(sqlQuery, values);
 	}
 
 	public Owner reviewOwner(Map<String, String> info) {
-		Object [] values = new Object[]{info.get("id")};
+		Object [] values = new Object[]{Integer.valueOf(info.get("id"))};
 		List<Organization> resultSet = jdbcTemplate.query(sqlQueries.reviewOwner(), values, organizationRowMapper);
 		return  resultSet.get(0);
 	}
@@ -64,7 +66,7 @@ public class AdminSpringDAO implements DAO {
 	public void createPassport(Map<String, String> info) {
 		Object [] values = new Object[]{info.get("id_organization"), info.get("region"), info.get("cadastr_number"), 
 										info.get("area"), info.get("type_field"), info.get("comment")};
-		jdbcTemplate.update(sqlQueries.deletePassport(), values);
+		jdbcTemplate.update(sqlQueries.createPassport(), values);
 	}
 
 	public void deletePassport(Map<String, String> info) {
@@ -73,8 +75,8 @@ public class AdminSpringDAO implements DAO {
 	}
 
 	public void editFieldsPassport(Map<String, String> info) {
-		Object [] values = new Object[]{info.get("field"), info.get("value"), info.get("id")};
-		jdbcTemplate.update(sqlQueries.editFieldsPassport(), values);
+		Object [] values = new Object[]{info.get("value"), info.get("id")};
+		jdbcTemplate.update(sqlQueries.editFieldsPassport(info), values);
 	}
 
 	public Passport reviewPassport(Map<String, String> info) {

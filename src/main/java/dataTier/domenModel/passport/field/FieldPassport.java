@@ -3,9 +3,9 @@ package dataTier.domenModel.passport.field;
 import dataTier.domenModel.owner.Owner;
 import dataTier.domenModel.passport.Passport;
 
-public class FieldPasport implements Passport {
+public class FieldPassport implements Passport {
 	
-	public FieldPasport(int id, int idOwner, String region, int cadastrNumber,
+	public FieldPassport(int id, int idOwner, String region, int cadastrNumber,
 			double area, String type, String comment) {
 		super();
 		this.id = id;

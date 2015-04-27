@@ -5,59 +5,52 @@ import java.util.Map;
 public class SQLServerQueries implements SQLQueries {
 
 	public String createOwner() {
-		return "INSERT INTO organization_table(name, inn, address_org) VALUES(?,?,?) GO";
+		return "INSERT INTO organization_table(name, inn, address_org) VALUES(?,?,?)";
 	}
 
 	public String deleteOwner() {
 		return "DELETE FROM organization_table "
-				+ " WHERE (id = ?); "
-				+ " GO ";
+				+ " WHERE (id = ?)";
 	}
 
-	public String editOwner() {
+	public String editOwner(Map<String, String> info) {
 		return "UPDATE organization_table "
 				+ " SET "
-				+ " [?] = ? "
-				+ " WHERE (id = ?); "
-				+ " GO ";
+				+ info.get("field") + " = ? "
+				+ " WHERE (id = ?)";
 	}
 
 	public String reviewOwner() {
 		return "SELECT * "
 				+ " FROM organization_table "
-				+ " WHERE (id = ?); "
-				+ " GO ";
+				+ " WHERE (id = ?)";
 	}
 
 	public String createPassport() {
-		return "INSERT INTO field_table(id_organization, region, cadastr_number, area, type_field, comment) VALUES(?,?,?,?,?,?) GO";
+		return "INSERT INTO field_table(id_organization, region, cadastr_number, area, type_field, comment) VALUES(?,?,?,?,?,?)";
 	}
 
 	public String deletePassport() {
 		return "DELETE FROM field_table "
-				+ " WHERE (id = ?); "
-				+ " GO ";
+				+ " WHERE (id = ?); ";
 	}
 
-	public String editFieldsPassport() {
+	public String editFieldsPassport(Map<String, String> info) {
 		return "UPDATE field_table "
 				+ " SET "
-				+ " [?] = ? "
-				+ " WHERE (id = ?); "
-				+ " GO ";
+				+ info.get("field") + " = ? "
+				+ " WHERE (id = ?);";
 	}
 
 	public String reviewPassport() {
 		return "SELECT * "
 				+ " FROM field_table "
-				+ " WHERE (id = ?); "
-				+ " GO ";
+				+ " WHERE (id = ?);";
 	}
 
 	public String reviewAllPassports() {
 		return "SELECT * "
-				+ " FROM field_table "
-				+ " GO ";
+				+ " FROM field_table ";
 	}
 
 	public String findPassports(Map<String, String> info) {

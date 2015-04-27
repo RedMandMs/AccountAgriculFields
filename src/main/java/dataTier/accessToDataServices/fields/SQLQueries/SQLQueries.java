@@ -9,12 +9,12 @@ public interface SQLQueries {
 
 	public String createOwner();
 	public String deleteOwner();
-	public String editOwner();
+	public String editOwner(Map<String, String> info);
 	public String reviewOwner();
 	
 	public String createPassport();
 	public String deletePassport();
-	public String editFieldsPassport();
+	public String editFieldsPassport(Map<String, String> info);
 	public String reviewPassport();
 	
 	public String reviewAllPassports();

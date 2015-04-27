@@ -4,6 +4,8 @@ import java.util.Map;
 import org.junit.Assert;
 import org.junit.Test;
 
+import dataTier.accessToDataServices.fields.AdminSpringDAO;
+import dataTier.accessToDataServices.fields.UserSpringDAO;
 import dataTier.accessToDataServices.fields.SQLQueries.SQLQueries;
 import dataTier.accessToDataServices.fields.SQLQueries.SQLServerQueries;
 
@@ -32,5 +34,25 @@ public class SQLTesting {
 	
 		Assert.assertEquals("SELECT *  FROM field_table  GO ", sqlQueries.reviewAllPassports());
 	}
-
+	
+	@Test
+	public void testWorkingWithBD(){
+		UserSpringDAO userDao = new UserSpringDAO();
+		AdminSpringDAO adminDao = new AdminSpringDAO();
+		
+		Map<String, String> infoOwner = new HashMap<String, String>();
+		infoOwner.put("name", "LenOblGis2");
+		infoOwner.put("inn", "123456");
+		infoOwner.put("address_org", "ul Torgkovskaya 15");
+		adminDao.createOwner(infoOwner);
+		
+		Map<String, String> infoPassport = new HashMap<String, String>();
+		infoPassport.put("id_organization", "2");
+		infoPassport.put("region", "Vsevologskiy");
+		infoPassport.put("cadastr_number", "123546");
+		infoPassport.put("area", "50");
+		infoPassport.put("type_field", "Для выращивания скота");
+		infoPassport.put("comment", "На 3 года");
+		adminDao.createPassport(infoPassport);
+	}
 }
