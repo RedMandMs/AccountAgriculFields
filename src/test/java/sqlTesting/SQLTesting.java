@@ -1,13 +1,12 @@
+import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.AdminSpringDAO;
+import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries;
+import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLServerQueries;
+import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.UserSpringDAO;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.junit.Assert;
 import org.junit.Test;
-
-import dataTier.accessToDataServices.fields.AdminSpringDAO;
-import dataTier.accessToDataServices.fields.UserSpringDAO;
-import dataTier.accessToDataServices.fields.SQLQueries.SQLQueries;
-import dataTier.accessToDataServices.fields.SQLQueries.SQLServerQueries;
 
 
 public class SQLTesting {
