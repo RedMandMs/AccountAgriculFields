@@ -49,27 +49,50 @@ public class Organization implements Owner{
 
 	
 	
-	//Геттеры и сеттеры
+	/*
+	 * (non-Javadoc)
+	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner#getId()
+	 */
 	public int getId() {
 		return id;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner#setId(int)
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner#getName()
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner#setName(java.lang.String)
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner#getINN()
+	 */
 	public int getINN() {
 		return inn;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner#setINN(int)
+	 */
 	public void setINN(int iNN) {
 		inn = iNN;
 	}
@@ -82,20 +105,24 @@ public class Organization implements Owner{
 		return addres;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner#setAddres(java.lang.String)
+	 */
 	public void setAddres(String addres) {
 		this.addres = addres;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner#getFields()
+	 */
 	public List<Passport> getFields() {
 		if (fields == null) {
 			this.fields = new ArrayList<Passport>();
 		}
 		
 		return fields;
-	}
-
-	public void setFields(List<Passport> fields) {
-		this.fields = fields;
 	}
 
 }

@@ -4,15 +4,27 @@ import java.util.Map;
 
 public class SQLServerQueries implements SQLQueries {
 
+	/*
+	 * (non-Javadoc)
+	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#createOwner()
+	 */
 	public String createOwner() {
 		return "INSERT INTO organization_table(name, inn, address_org) VALUES(?,?,?)";
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#deleteOwner()
+	 */
 	public String deleteOwner() {
 		return "DELETE FROM organization_table "
 				+ " WHERE (id = ?)";
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#editOwner(java.util.Map)
+	 */
 	public String editOwner(Map<String, String> info) {
 		return "UPDATE organization_table "
 				+ " SET "
@@ -20,21 +32,37 @@ public class SQLServerQueries implements SQLQueries {
 				+ " WHERE (id = ?)";
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#reviewOwner()
+	 */
 	public String reviewOwner() {
 		return "SELECT * "
 				+ " FROM organization_table "
 				+ " WHERE (id = ?)";
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#createPassport()
+	 */
 	public String createPassport() {
 		return "INSERT INTO field_table(id_organization, region, cadastr_number, area, type_field, comment) VALUES(?,?,?,?,?,?)";
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#deletePassport()
+	 */
 	public String deletePassport() {
 		return "DELETE FROM field_table "
 				+ " WHERE (id = ?); ";
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#editFieldsPassport(java.util.Map)
+	 */
 	public String editFieldsPassport(Map<String, String> info) {
 		return "UPDATE field_table "
 				+ " SET "
@@ -42,17 +70,29 @@ public class SQLServerQueries implements SQLQueries {
 				+ " WHERE (id = ?);";
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#reviewPassport()
+	 */
 	public String reviewPassport() {
 		return "SELECT * "
 				+ " FROM field_table "
 				+ " WHERE (id = ?);";
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#reviewAllPassports()
+	 */
 	public String reviewAllPassports() {
 		return "SELECT * "
 				+ " FROM field_table ";
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#findPassports(java.util.Map)
+	 */
 	public String findPassports(Map<String, String> info) {
 		String query = "SELECT * FROM field_table WHERE (";
 		String condition = "";

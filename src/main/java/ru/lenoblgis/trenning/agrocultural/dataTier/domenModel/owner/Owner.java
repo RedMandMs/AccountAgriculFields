@@ -48,9 +48,4 @@ public interface Owner {
 	 */
 	public List<Passport> getFields();
 	
-	/*
-	 * Установить список паспортов владельца
-	 */
-	public void setFields(List<Passport> fields);
-	
 }
