@@ -17,7 +17,7 @@ public interface SQLQueries {
 	/*
 	 * Редактировать владельца
 	 */
-	public String editOwner(Map<String,String> info);
+	public String editOwner();
 	
 	/*
 	 * Просмотреть владельца
@@ -39,7 +39,7 @@ public interface SQLQueries {
 	/*
 	 * Редактирование паспорта
 	 */
-	public String editFieldsPassport(Map<String,String> info);
+	public String editFieldsPassport();
 	
 	/*
 	 * Просмотр паспорта

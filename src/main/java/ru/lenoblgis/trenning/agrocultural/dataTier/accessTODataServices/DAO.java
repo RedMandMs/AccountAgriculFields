@@ -10,43 +10,43 @@ public interface DAO {
 	/*
 	 * Создание владельца
 	 */
-	public void createOwner(Map<String,String> info);
+	public void createOwner(Owner owner);
 	
 	/*
 	 * Удаление владельца
 	 */
-	public void deleteOwner(Map<String,String> info);
+	public void deleteOwner(int idOwner);
 	
 	/*
 	 * Редактировать владельца
 	 */
-	public void editOwner(Map<String,String> info);
+	public void editOwner(Owner owner);
 	
 	/*
 	 * Просмотреть владельца
 	 */
-	public Owner reviewOwner(Map<String,String> info);
+	public Owner reviewOwner(int idOwner);
 	
 	
 	/*
 	 * Создание паспорта
 	 */
-	public void createPassport(Map<String,String> info);
+	public void createPassport(Passport passport);
 	
 	/*
 	 * Удаление паспорта
 	 */
-	public void deletePassport(Map<String,String> info);
+	public void deletePassport(int idPassport);
 	
 	/*
 	 * Редактирование паспорта
 	 */
-	public void editFieldsPassport(Map<String,String> info);
+	public void editFieldsPassport(Passport passport);
 	
 	/*
 	 * Просмотр паспорта
 	*/
-	public Passport reviewPassport(Map<String,String> info);
+	public Passport reviewPassport(int idPassport);
 	
 	/*
 	 * Просмотр всех пасспортов

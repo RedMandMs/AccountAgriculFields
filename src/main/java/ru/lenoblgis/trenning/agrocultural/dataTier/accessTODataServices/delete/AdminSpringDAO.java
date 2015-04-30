@@ -1,4 +1,4 @@
-package ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices;
+package ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.delete;
 
 import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries;
 import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLServerQueries;
@@ -15,7 +15,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 
-public class AdminSpringDAO implements DAO  {
+public class AdminSpringDAO implements DAO {
 
 	public AdminSpringDAO(){
 		postConstruct();
@@ -45,8 +45,8 @@ public class AdminSpringDAO implements DAO  {
 	 * (non-Javadoc)
 	 * @see dataTier.accessToDataServices.DAO#createOwner(java.util.Map)
 	 */
-	public void createOwner(Owner owner) {
-		Object [] values = new Object[]{owner.getName(), owner.getINN(), owner.getAddres()};
+	public void createOwner(Map<String, String> info) {
+		Object [] values = new Object[]{(String) info.get("name"), Integer.valueOf(info.get("inn")), (String) info.get("address_org")};
 		String sqlQuery = sqlQueries.createOwner();
 		jdbcTemplate.update(sqlQuery, values);
 	}
@@ -55,8 +55,8 @@ public class AdminSpringDAO implements DAO  {
 	 * (non-Javadoc)
 	 * @see dataTier.accessToDataServices.DAO#deleteOwner(java.util.Map)
 	 */
-	public void deleteOwner(int idOwner) {
-		Object [] values = new Object[]{idOwner};
+	public void deleteOwner(Map<String, String> info) {
+		Object [] values = new Object[]{info.get("id")};
 		jdbcTemplate.update(sqlQueries.deleteOwner(), values);
 	}
 
@@ -64,9 +64,9 @@ public class AdminSpringDAO implements DAO  {
 	 * (non-Javadoc)
 	 * @see dataTier.accessToDataServices.DAO#editOwner(java.util.Map)
 	 */
-	public void editOwner(Owner owner) {
-		Object [] values = new Object[]{owner.getName(), owner.getINN(), owner.getAddres(), owner.getId()};
-		String sqlQuery = sqlQueries.editOwner();
+	public void editOwner(Map<String, String> info) {
+		Object [] values = new Object[]{info.get("value"), info.get("id")};
+		String sqlQuery = sqlQueries.editOwner(info);
 		jdbcTemplate.update(sqlQuery, values);
 	}
 
@@ -74,8 +74,8 @@ public class AdminSpringDAO implements DAO  {
 	 * (non-Javadoc)
 	 * @see dataTier.accessToDataServices.DAO#reviewOwner(java.util.Map)
 	 */
-	public Owner reviewOwner(int id) {
-		Object [] values = new Object[]{id};
+	public Owner reviewOwner(Map<String, String> info) {
+		Object [] values = new Object[]{Integer.valueOf(info.get("id"))};
 		List<Organization> resultSet = jdbcTemplate.query(sqlQueries.reviewOwner(), values, organizationRowMapper);
 		return  resultSet.get(0);
 	}
@@ -84,9 +84,9 @@ public class AdminSpringDAO implements DAO  {
 	 * (non-Javadoc)
 	 * @see dataTier.accessToDataServices.DAO#createPassport(java.util.Map)
 	 */
-	public void createPassport(Passport passport) {
-		Object [] values = new Object[]{passport.getIdOwner(), passport.getRegion(), passport.getCadastrNumber(), 
-										passport.getArea(), passport.getType(), passport.getComment()};
+	public void createPassport(Map<String, String> info) {
+		Object [] values = new Object[]{info.get("id_organization"), info.get("region"), info.get("cadastr_number"), 
+										info.get("area"), info.get("type_field"), info.get("comment")};
 		jdbcTemplate.update(sqlQueries.createPassport(), values);
 	}
 
@@ -94,8 +94,8 @@ public class AdminSpringDAO implements DAO  {
 	 * (non-Javadoc)
 	 * @see dataTier.accessToDataServices.DAO#deletePassport(java.util.Map)
 	 */
-	public void deletePassport(int id) {
-		Object [] values = new Object[]{id};
+	public void deletePassport(Map<String, String> info) {
+		Object [] values = new Object[]{info.get("id")};
 		jdbcTemplate.update(sqlQueries.deletePassport(), values);
 	}
 
@@ -103,17 +103,17 @@ public class AdminSpringDAO implements DAO  {
 	 * (non-Javadoc)
 	 * @see dataTier.accessToDataServices.DAO#editFieldsPassport(java.util.Map)
 	 */
-	public void editFieldsPassport(Passport passport) {
-		Object [] values = new Object[]{passport.getIdOwner(), passport.getRegion(), passport.getCadastrNumber(), passport.getArea(), passport.getType(), passport.getComment()};
-		jdbcTemplate.update(sqlQueries.editFieldsPassport(), values);
+	public void editFieldsPassport(Map<String, String> info) {
+		Object [] values = new Object[]{info.get("value"), info.get("id")};
+		jdbcTemplate.update(sqlQueries.editFieldsPassport(info), values);
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * @see dataTier.accessToDataServices.DAO#reviewPassport(java.util.Map)
 	 */
-	public Passport reviewPassport(int id) {
-		Object[] values = new Object[] {id};
+	public Passport reviewPassport(Map<String, String> info) {
+		Object[] values = new Object[] {info.get("id")};
 		List<Passport> resultSet = jdbcTemplate.query(sqlQueries.reviewPassport(), values , passportRowMapper);
 		return resultSet.get(0);
 	}

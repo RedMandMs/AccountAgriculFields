@@ -25,10 +25,12 @@ public class SQLServerQueries implements SQLQueries {
 	 * (non-Javadoc)
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#editOwner(java.util.Map)
 	 */
-	public String editOwner(Map<String, String> info) {
+	public String editOwner() {
 		return "UPDATE organization_table "
 				+ " SET "
-				+ info.get("field") + " = ? "
+				+ " name = ? , "
+				+ " inn = ? , "
+				+ " address_org = ? "
 				+ " WHERE (id = ?)";
 	}
 
@@ -63,10 +65,15 @@ public class SQLServerQueries implements SQLQueries {
 	 * (non-Javadoc)
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#editFieldsPassport(java.util.Map)
 	 */
-	public String editFieldsPassport(Map<String, String> info) {
+	public String editFieldsPassport() {
 		return "UPDATE field_table "
 				+ " SET "
-				+ info.get("field") + " = ? "
+				+ " id_organization = ? "
+				+ " region = ? "
+				+ " cadastr_number = ? "
+				+ " area = ? "
+				+ " type_field = ? "
+				+ " comment = ? "
 				+ " WHERE (id = ?);";
 	}
 
