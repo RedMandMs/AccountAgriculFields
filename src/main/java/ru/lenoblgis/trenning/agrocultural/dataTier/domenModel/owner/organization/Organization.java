@@ -9,7 +9,6 @@ public class Organization implements Owner{
 	
 	
 	public Organization(int id, String name, int inn, String addres) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.inn = inn;

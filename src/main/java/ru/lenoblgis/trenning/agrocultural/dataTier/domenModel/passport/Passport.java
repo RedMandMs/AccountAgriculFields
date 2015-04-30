@@ -5,7 +5,6 @@ public class Passport {
 	
 	public Passport(int id, int idOwner, String region, int cadastrNumber,
 			double area, String type, String comment) {
-		super();
 		this.id = id;
 		this.idOwner = idOwner;
 		this.region = region;
@@ -16,9 +15,8 @@ public class Passport {
 	}
 	
 	public Passport() {
-		// TODO Auto-generated constructor stub
-	}
 		
+	}
 	
 	
 	/*
