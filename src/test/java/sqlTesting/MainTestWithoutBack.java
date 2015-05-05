@@ -1,12 +1,10 @@
-import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.AdminSpringDAO;
-import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.UserSpringDAO;
 
 
 public class MainTestWithoutBack {
 	
 	public static void main(String[] args){
-		UserSpringDAO userDao = new UserSpringDAO();
-		AdminSpringDAO adminDao = new AdminSpringDAO();
+		/*UserSpringDAO userDao = new UserSpringDAO();
+		AdminSpringDAO adminDao = new AdminSpringDAO();*/
 		
 		/*Map<String, String> infoOwner = new HashMap<String, String>();
 		infoOwner.put("name", "LenOblGis2");

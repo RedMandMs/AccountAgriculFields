@@ -1,9 +1,6 @@
 package ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.organization;
 
 import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner;
-import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.passport.Passport;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Organization implements Owner{
 	

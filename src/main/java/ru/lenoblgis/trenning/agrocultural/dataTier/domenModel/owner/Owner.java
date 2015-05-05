@@ -1,7 +1,5 @@
 package ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner;
 
-import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.passport.Passport;
-import java.util.List;
 
 public interface Owner {
 

@@ -1,5 +1,3 @@
-import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,10 +5,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.AdminSpringDAO;
-import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.UserSpringDAO;
 import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries;
 import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLServerQueries;
-import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.organization.Organization;
 import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.passport.Passport;
 
 
@@ -41,10 +37,10 @@ public class SQLTesting {
 	
 	@Test
 	public void testWorkingWithBD(){
-		UserSpringDAO userDao = new UserSpringDAO();
+		//UserSpringDAO userDao = new UserSpringDAO();
 		AdminSpringDAO adminDao = new AdminSpringDAO();
 		
-		Owner owner1 = new Organization(-1, "LenOblGis2", 1234564, null);
+		//Owner owner1 = new Organization(-1, "LenOblGis2", 1234564, null);
 		//adminDao.createOwner(owner1);
 		
 		Passport fieldPassport1 = new Passport(-1, 8, "Всеволожский р-н", "70", 20, "Сельскохозяйственное производство", null);
