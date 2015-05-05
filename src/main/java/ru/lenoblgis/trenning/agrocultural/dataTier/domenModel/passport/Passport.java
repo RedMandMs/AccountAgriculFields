@@ -3,19 +3,20 @@ package ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.passport;
 
 public class Passport {
 	
-	public Passport(int id, int idOwner, String region, int cadastrNumber,
-			double area, String type, String comment) {
-		this.id = id;
-		this.idOwner = idOwner;
-		this.region = region;
-		this.cadastrNumber = cadastrNumber;
-		this.area = area;
-		this.type = type;
-		this.comment = comment;
+	public Passport(int id, int idOwner, String region, String cadastrNumber,
+			int area, String type, String comment) {
+		setID(id);
+		setIdOwner(idOwner);
+		setRegion(region);
+		setCadastrNumber(cadastrNumber);
+		setArea(area);
+		setType(type);		
+		setComment(comment);
 	}
 	
 	public Passport() {
-		
+		setComment(null);
+		setCadastrNumber(null);
 	}
 	
 	
@@ -32,22 +33,22 @@ public class Passport {
 	/*
 	 * Регионр расположения поля
 	 */
-	private String region;
+	private RegionField region;
 	
 	/*
 	 * Кадастровый номер поля
 	 */
-	private int cadastrNumber;
+	private Integer cadastrNumber;
 	
 	/*
 	 * Площадь поля
 	 */
-	private double area;
+	private int area;
 	
 	/*
 	 * Тип поля
 	 */
-	private String type;
+	private TypeField type;
 	
 	/*
 	 * комментарий к полю
@@ -87,41 +88,45 @@ public class Passport {
 	 * Получение региона
 	 */
 	public String getRegion() {
-		return region;
+		return region.region;
 	}
 	
 	/*
 	 * Установка региона
 	 */
 	public void setRegion(String region) {
-		this.region = region;
+		this.region = RegionField.getRegion(region);
 	}
 	
 	/*
 	 * Получение кадастрового номера
 	 */
-	public int getCadastrNumber() {
-		return cadastrNumber;
+	public Integer getCadastrNumber() {
+			return cadastrNumber;
 	}
 	
 	/*
 	 * Установка кадастрового номера
 	 */
-	public void setCadastrNumber(int cadastrNumber) {
-		this.cadastrNumber = cadastrNumber;
+	public void setCadastrNumber(String cadastrNumber) {
+		if(cadastrNumber == null || cadastrNumber.trim().equals("")){
+			this.cadastrNumber = null;
+		}else{
+			this.cadastrNumber = Integer.valueOf(cadastrNumber);
+		}
 	}
 	
 	/*
 	 * Получение площади поля
 	 */
-	public double getArea() {
+	public int getArea() {
 		return area;
 	}
 	
 	/*
 	 * Установка площади поля
 	 */
-	public void setArea(double area) {
+	public void setArea(int area) {
 		this.area = area;
 	}
 	
@@ -129,14 +134,14 @@ public class Passport {
 	 * Получение типа поля
 	 */
 	public String getType() {
-		return type;
+		return type.type;
 	}
 	
 	/*
 	 * Установка типа поля
 	 */
 	public void setType(String type) {
-		this.type = type;
+		this.type = TypeField.getType(type);
 	}
 	
 	/*
@@ -150,7 +155,11 @@ public class Passport {
 	 * Установка комментария к пасспорту
 	 */
 	public void setComment(String comment) {
-		this.comment = comment;
+		if(comment == null || comment.trim().equals("")){
+			this.comment = "This passport hasn't comment";
+		}else{
+			this.comment = comment;
+		}
 	}
 
 

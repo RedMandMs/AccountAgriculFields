@@ -1,12 +1,17 @@
-import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.AdminSpringDAO;
-import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries;
-import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLServerQueries;
-import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.UserSpringDAO;
+import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner;
+
 import java.util.HashMap;
 import java.util.Map;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.AdminSpringDAO;
+import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.UserSpringDAO;
+import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries;
+import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLServerQueries;
+import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.organization.Organization;
+import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.passport.Passport;
 
 
 public class SQLTesting {
@@ -31,7 +36,7 @@ public class SQLTesting {
 	public void testReviewAllPassports(){
 		SQLQueries sqlQueries = new SQLServerQueries();
 	
-		Assert.assertEquals("SELECT *  FROM field_table  GO ", sqlQueries.reviewAllPassports());
+		Assert.assertEquals("SELECT *  FROM field_table ", sqlQueries.reviewAllPassports());
 	}
 	
 	@Test
@@ -39,19 +44,11 @@ public class SQLTesting {
 		UserSpringDAO userDao = new UserSpringDAO();
 		AdminSpringDAO adminDao = new AdminSpringDAO();
 		
-		Map<String, String> infoOwner = new HashMap<String, String>();
-		infoOwner.put("name", "LenOblGis2");
-		infoOwner.put("inn", "123456");
-		infoOwner.put("address_org", "ul Torgkovskaya 15");
-		adminDao.createOwner(infoOwner);
+		Owner owner1 = new Organization(-1, "LenOblGis2", 1234564, null);
+		//adminDao.createOwner(owner1);
 		
-		Map<String, String> infoPassport = new HashMap<String, String>();
-		infoPassport.put("id_organization", "2");
-		infoPassport.put("region", "Vsevologskiy");
-		infoPassport.put("cadastr_number", "123546");
-		infoPassport.put("area", "50");
-		infoPassport.put("type_field", "Для выращивания скота");
-		infoPassport.put("comment", "На 3 года");
-		adminDao.createPassport(infoPassport);
+		Passport fieldPassport1 = new Passport(-1, 8, "Всеволожский р-н", "70", 20, "Сельскохозяйственное производство", null);
+		adminDao.createPassport(fieldPassport1);
+		//adminDao.deletePassport(3);
 	}
 }

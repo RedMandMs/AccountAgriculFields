@@ -12,11 +12,15 @@ public class Organization implements Owner{
 		this.id = id;
 		this.name = name;
 		this.inn = inn;
-		this.addres = addres;
+		if(addres == null || addres.trim().equals("")){
+			this.addres = "UNKNOWN";
+		}else{
+			this.addres = addres;
+		}
 	}
 	
 	public Organization(){
-		
+		this.addres = "UNKNOWN";
 	}
 
 	/*
@@ -40,12 +44,6 @@ public class Organization implements Owner{
 	 * Адресс организации
 	 */
 	private String addres;
-	
-	/*
-	 * Список всех полей данной организации
-	 */
-	private List<Passport> fields;
-
 	
 	
 	/*
@@ -110,18 +108,6 @@ public class Organization implements Owner{
 	 */
 	public void setAddres(String addres) {
 		this.addres = addres;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner#getFields()
-	 */
-	public List<Passport> getFields() {
-		if (fields == null) {
-			this.fields = new ArrayList<Passport>();
-		}
-		
-		return fields;
 	}
 
 }

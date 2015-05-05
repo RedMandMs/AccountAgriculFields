@@ -13,8 +13,8 @@ public class PassportRowMapper implements RowMapper<Passport> {
 	 * @see org.springframework.jdbc.core.RowMapper#mapRow(java.sql.ResultSet, int)
 	 */
 	public Passport mapRow(ResultSet rs, int rowNum) throws SQLException {		
-		return new Passport(rs.getInt("id"), rs.getInt("id_organization"), rs.getString("region"), rs.getInt("cadastr_number"
-				+ ""), rs.getDouble("area"), rs.getString("type_field"), rs.getString("comment"));
+		return new Passport(rs.getInt("id"), rs.getInt("id_organization"), rs.getString("region"), 
+				rs.getString("cadastr_number"), rs.getInt("area"), rs.getString("type_field"), rs.getString("comment"));
 	}
 
 }

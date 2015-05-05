@@ -25,7 +25,6 @@ public interface SQLQueries {
 	public String reviewOwner();
 	
 	
-	
 	/*
 	 * Создание паспорта
 	 */

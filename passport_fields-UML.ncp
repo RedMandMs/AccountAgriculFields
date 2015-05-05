@@ -7,7 +7,7 @@
       <Entity type="Interface">
         <Name>Owner</Name>
         <Access>Public</Access>
-        <Location left="765" top="180" />
+        <Location left="689" top="88" />
         <Size width="217" height="251" />
         <Collapsed>False</Collapsed>
         <Member type="Method">public int getId()</Member>
@@ -20,26 +20,10 @@
         <Member type="Method">public void setAddres(String addres)</Member>
         <Member type="Method">public List&lt;Passport&gt; getFields()</Member>
       </Entity>
-      <Entity type="Interface">
-        <Name>PassportEvent</Name>
-        <Access>Public</Access>
-        <Location left="742" top="553" />
-        <Size width="162" height="230" />
-        <Collapsed>False</Collapsed>
-        <Member type="Method">public int getId()</Member>
-        <Member type="Method">public String getMessage()</Member>
-        <Member type="Method">public void writeMessage()</Member>
-        <Member type="Method">public Owner getAothor()</Member>
-        <Member type="Method">public Passport getPassport()</Member>
-        <Member type="Method">public DateTime getDataTime()</Member>
-        <Member type="Method">public LocalDate getTime()</Member>
-        <Member type="Method">public DateTime getData()</Member>
-        <Member type="Method">public String getType()</Member>
-      </Entity>
       <Entity type="Class">
         <Name>PassportField</Name>
         <Access>Public</Access>
-        <Location left="323" top="180" />
+        <Location left="321" top="378" />
         <Size width="287" height="434" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private int id</Member>
@@ -68,21 +52,55 @@
       <Entity type="Class">
         <Name>Organization</Name>
         <Access>Public</Access>
-        <Location left="1049" top="196" />
-        <Size width="162" height="162" />
+        <Location left="689" top="399" />
+        <Size width="221" height="315" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private int id</Member>
         <Member type="Field">private String name</Member>
         <Member type="Field">private int INN</Member>
         <Member type="Field">private String Addres</Member>
         <Member type="Field">private List&lt;Passport&gt; fields</Member>
+        <Member type="Method">int getId()</Member>
+        <Member type="Method">void setId(int id)</Member>
+        <Member type="Method">String getName()</Member>
+        <Member type="Method">void setName(String name)</Member>
+        <Member type="Method">int getINN()</Member>
+        <Member type="Method">void setINN(int iNN)</Member>
+        <Member type="Method">String getAddres()</Member>
+        <Member type="Method">void setAddres(String addres)</Member>
+        <Member type="Method">List&lt;Passport&gt; getFields()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>PassportEvent</Name>
+        <Access>Public</Access>
+        <Location left="971" top="399" />
+        <Size width="257" height="315" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public int getId()</Member>
+        <Member type="Method">public void setId(int id)</Member>
+        <Member type="Method">public String getMessage()</Member>
+        <Member type="Method">public void setMessage(String massage)</Member>
+        <Member type="Method">public int getIdAothor()</Member>
+        <Member type="Method">public void setIdAuthor(int idAuthor)</Member>
+        <Member type="Method">public int getPassport()</Member>
+        <Member type="Method">public void setIdPassport(int idPassport)</Member>
+        <Member type="Method">public DateTime getDataTime()</Member>
+        <Member type="Method">public void setDataTime(DateTime dateTime)</Member>
+        <Member type="Method">public LocalDate getTime()</Member>
+        <Member type="Method">public TypeEvent getType()</Member>
+        <Member type="Method">public void setType(TypeEvent typeEvent)</Member>
         <Modifier>None</Modifier>
       </Entity>
     </Entities>
     <Relationships>
-      <Relationship type="Realization" first="3" second="0">
-        <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
+      <Relationship type="Realization" first="2" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>798</X>
+          <Y>374</Y>
+        </BendPoint>
       </Relationship>
     </Relationships>
   </ProjectItem>

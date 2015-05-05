@@ -35,8 +35,8 @@ public class AdminSpringDAO implements DAO  {
 		ds.setPortNumber(1433);
 		ds.setHostNameInCertificate("localhost");
 		ds.setDatabaseName("passport_agricultural");
-		ds.setUser("sergey");
-		ds.setPassword("lenoblgissergey");
+		ds.setUser("adminAgricultural");
+		ds.setPassword("admin123");
 		
 		jdbcTemplate = new JdbcTemplate(ds);
 	}
@@ -104,7 +104,7 @@ public class AdminSpringDAO implements DAO  {
 	 * @see dataTier.accessToDataServices.DAO#editFieldsPassport(java.util.Map)
 	 */
 	public void editFieldsPassport(Passport passport) {
-		Object [] values = new Object[]{passport.getIdOwner(), passport.getRegion(), passport.getCadastrNumber(), passport.getArea(), passport.getType(), passport.getComment()};
+		Object [] values = new Object[]{passport.getIdOwner(), passport.getRegion(), passport.getCadastrNumber(), passport.getArea(), passport.getType(), passport.getComment(), passport.getID()};
 		jdbcTemplate.update(sqlQueries.editFieldsPassport(), values);
 	}
 

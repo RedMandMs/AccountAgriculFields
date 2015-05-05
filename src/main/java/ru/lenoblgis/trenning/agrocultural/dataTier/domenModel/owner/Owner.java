@@ -43,9 +43,5 @@ public interface Owner {
 	 */
 	public void setAddres(String addres);
 
-	/*
-	 * Получить список поспартов владельца
-	 */
-	public List<Passport> getFields();
 	
 }
