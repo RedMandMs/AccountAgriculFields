@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 public class PassportRowMapper implements RowMapper<Passport> {
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see org.springframework.jdbc.core.RowMapper#mapRow(java.sql.ResultSet, int)
 	 */

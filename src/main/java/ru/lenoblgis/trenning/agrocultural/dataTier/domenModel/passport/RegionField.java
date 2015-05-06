@@ -1,5 +1,10 @@
 package ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.passport;
 
+/**
+ * Перечисление 
+ * @author Vilgodskiy
+ *
+ */
 public enum RegionField {
 	
 	VSEVOLOGSK("Всеволожский р-н"),
@@ -17,6 +22,17 @@ public enum RegionField {
 		return null;
 	}
 
-	String region;
+	/**
+	 * Имя региона
+	 */
+	private String region;
+
+	/**
+	 * Получить название региона
+	 * @return - название региона
+	 */
+	public String getRegion() {
+		return region;
+	}
 
 }

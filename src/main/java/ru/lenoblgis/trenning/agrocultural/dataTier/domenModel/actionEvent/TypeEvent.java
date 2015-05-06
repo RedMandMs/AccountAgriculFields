@@ -11,6 +11,17 @@ public enum TypeEvent {
 		this.type = type;
 	}
 	
-	String type;
+	/**
+	 * Тип события
+	 */
+	private String type;
+
+	/**
+	 * Получить тип события
+	 * @return - тип события
+	 */
+	public String getType() {
+		return type;
+	}
 
 }

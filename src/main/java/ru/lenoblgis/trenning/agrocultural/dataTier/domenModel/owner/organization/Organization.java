@@ -20,30 +20,30 @@ public class Organization implements Owner{
 		this.addres = "UNKNOWN";
 	}
 
-	/*
+	/**
 	 * id организации
 	 */
 	private int id;
 	
-	/*
+	/**
 	 * Название организации
 	 */
 	private String name;
 	
 	
-	/*
+	/**
 	 * ИНН организации
 	 */
 	private int inn;
 	
 	
-	/*
+	/**
 	 * Адресс организации
 	 */
 	private String addres;
 	
 	
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner#getId()
 	 */
@@ -51,7 +51,7 @@ public class Organization implements Owner{
 		return id;
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner#setId(int)
 	 */
@@ -59,7 +59,7 @@ public class Organization implements Owner{
 		this.id = id;
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner#getName()
 	 */
@@ -67,7 +67,7 @@ public class Organization implements Owner{
 		return name;
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner#setName(java.lang.String)
 	 */
@@ -75,7 +75,7 @@ public class Organization implements Owner{
 		this.name = name;
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner#getINN()
 	 */
@@ -83,7 +83,7 @@ public class Organization implements Owner{
 		return inn;
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner#setINN(int)
 	 */
@@ -91,7 +91,7 @@ public class Organization implements Owner{
 		inn = iNN;
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see dataTier.domenModel.owner.Owner#getAddres()
 	 */
@@ -99,7 +99,7 @@ public class Organization implements Owner{
 		return addres;
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner#setAddres(java.lang.String)
 	 */

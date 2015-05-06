@@ -27,7 +27,7 @@ public class AdminSpringDAO implements DAO  {
 	PassportRowMapper passportRowMapper = new PassportRowMapper();
 	OrganizationRowMapper organizationRowMapper = new OrganizationRowMapper();
 	
-	/*
+	/**
 	 * Подключение DataSource к базе данных и создание jdbcTemplate
 	 */
 	public void postConstruct(){
@@ -41,7 +41,7 @@ public class AdminSpringDAO implements DAO  {
 		jdbcTemplate = new JdbcTemplate(ds);
 	}
 	
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see dataTier.accessToDataServices.DAO#createOwner(java.util.Map)
 	 */
@@ -51,7 +51,7 @@ public class AdminSpringDAO implements DAO  {
 		jdbcTemplate.update(sqlQuery, values);
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see dataTier.accessToDataServices.DAO#deleteOwner(java.util.Map)
 	 */
@@ -60,7 +60,7 @@ public class AdminSpringDAO implements DAO  {
 		jdbcTemplate.update(sqlQueries.deleteOwner(), values);
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see dataTier.accessToDataServices.DAO#editOwner(java.util.Map)
 	 */
@@ -70,7 +70,7 @@ public class AdminSpringDAO implements DAO  {
 		jdbcTemplate.update(sqlQuery, values);
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see dataTier.accessToDataServices.DAO#reviewOwner(java.util.Map)
 	 */
@@ -80,7 +80,7 @@ public class AdminSpringDAO implements DAO  {
 		return  resultSet.get(0);
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see dataTier.accessToDataServices.DAO#createPassport(java.util.Map)
 	 */
@@ -90,7 +90,7 @@ public class AdminSpringDAO implements DAO  {
 		jdbcTemplate.update(sqlQueries.createPassport(), values);
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see dataTier.accessToDataServices.DAO#deletePassport(java.util.Map)
 	 */
@@ -99,7 +99,7 @@ public class AdminSpringDAO implements DAO  {
 		jdbcTemplate.update(sqlQueries.deletePassport(), values);
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see dataTier.accessToDataServices.DAO#editFieldsPassport(java.util.Map)
 	 */
@@ -108,7 +108,7 @@ public class AdminSpringDAO implements DAO  {
 		jdbcTemplate.update(sqlQueries.editFieldsPassport(), values);
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see dataTier.accessToDataServices.DAO#reviewPassport(java.util.Map)
 	 */
@@ -118,7 +118,7 @@ public class AdminSpringDAO implements DAO  {
 		return resultSet.get(0);
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see dataTier.accessToDataServices.DAO#reviewAllPassports()
 	 */
@@ -126,7 +126,7 @@ public class AdminSpringDAO implements DAO  {
 		return jdbcTemplate.query(sqlQueries.reviewAllPassports(), passportRowMapper);
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see dataTier.accessToDataServices.DAO#findPassports(java.util.Map)
 	 */

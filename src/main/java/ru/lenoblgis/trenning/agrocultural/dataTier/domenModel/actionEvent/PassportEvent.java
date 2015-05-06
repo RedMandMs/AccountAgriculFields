@@ -16,91 +16,98 @@ public class PassportEvent {
 		
 	}
 	
-	/*
+	/**
 	 * Установить id события
 	 */
 	public void setId(int id){
 		this.id = id;
 	}
 	
-	/*
+	/**
 	 * Установить сообщение события
 	 */
 	public void setMessage(String massage){
 		this.message = massage;
 	}
 	
-	/*
+	/**
 	 * Установить дату и время события
 	 */
 	public void setDataTime(DateTime dateTime){
 		this.dateTime = dateTime;
 	}
 	
-	/*
+	/**
 	 * Установить тип события
 	 */
 	public void setType(TypeEvent typeEvent){
 		this.typeEvent = typeEvent;
 	}
 	
-	/*
+	/**
 	 * Установить id автора события
 	 */
 	public void setIdAuthor(int idAuthor){
 		this.idAuthor = idAuthor;
 	}
 	
-	/*
+	/**
 	 * Установить id паспорт над которым было совершино событие
 	 */
 	public void setIdPassport(int idPassport){
 		this.idPassport = idPassport;
 	}
 	
-	/*
+	/**
 	 * Получить id события
 	 */
 	public int getId(){
 		return id;
 	}
 	
-	/*
+	/**
 	 * Получить сообщение события
 	 */
 	public String getMessage(){
 		return message;
 	}
 	
-	/*
+	/**
 	 * Получить дату и время события
 	 */
 	public DateTime getDataTime(){
 		return dateTime;
 	}
 	
-	/*
+	/**
 	 * Пролучить время события
 	 */
 	public LocalDate getTime(){
 		return dateTime.toLocalDate();
 	}
 	
-	/*
+	/**
 	 * Получить тип события
 	 */
-	public TypeEvent getType(){
+	public TypeEvent getTypeEvent(){
 		return typeEvent;
 	}
 	
-	/*
+	/**
+	 * Получить тип события (словами)
+	 */
+	public String getType(){
+		return typeEvent.getType();
+	}
+	
+	/**
 	 * Получить id автора события
 	 */
 	public int getIdAothor(){
 		return idAuthor;
 	}
 	
-	/*
+	/**
 	 * Получить id паспорт над которым было совершино событие
 	 */
 	public int getIdPassport(){

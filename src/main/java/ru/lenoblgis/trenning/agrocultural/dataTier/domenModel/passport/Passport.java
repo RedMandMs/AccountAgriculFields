@@ -20,92 +20,92 @@ public class Passport {
 	}
 	
 	
-	/*
+	/**
 	 * Id поля
 	 */
 	private int id;
 	
-	 /*
+	 /**
 	  * Организация-владелец поля
 	  */
 	private int idOwner;
 	
-	/*
+	/**
 	 * Регионр расположения поля
 	 */
 	private RegionField region;
 	
-	/*
+	/**
 	 * Кадастровый номер поля
 	 */
 	private Integer cadastrNumber;
 	
-	/*
+	/**
 	 * Площадь поля
 	 */
 	private int area;
 	
-	/*
+	/**
 	 * Тип поля
 	 */
 	private TypeField type;
 	
-	/*
+	/**
 	 * комментарий к полю
 	 */
 	private String comment;
 	
 	
-	/*
+	/**
 	 * Получение id паспорта
 	 */
 	public int getID() {
 		return id;
 	}
 	
-	/*
+	/**
 	 * установка id паспорта
 	 */
 	public void setID(int id) {
 		this.id = id;
 	}
 	
-	/*
+	/**
 	 * Получение id владельца
 	 */
 	public int getIdOwner() {
 		return idOwner;
 	}
 	
-	/*
+	/**
 	 * Установка id владельца
 	 */
 	public void setIdOwner(int idOwner) {
 		this.idOwner = idOwner;
 	}
 	
-	/*
+	/**
 	 * Получение региона
 	 */
 	public String getRegion() {
-		return region.region;
+		return region.getRegion();
 	}
 	
-	/*
+	/**
 	 * Установка региона
 	 */
 	public void setRegion(String region) {
 		this.region = RegionField.getRegion(region);
 	}
 	
-	/*
+	/**
 	 * Получение кадастрового номера
 	 */
 	public Integer getCadastrNumber() {
 			return cadastrNumber;
 	}
 	
-	/*
+	/**
 	 * Установка кадастрового номера
 	 */
 	public void setCadastrNumber(String cadastrNumber) {
@@ -116,42 +116,42 @@ public class Passport {
 		}
 	}
 	
-	/*
+	/**
 	 * Получение площади поля
 	 */
 	public int getArea() {
 		return area;
 	}
 	
-	/*
+	/**
 	 * Установка площади поля
 	 */
 	public void setArea(int area) {
 		this.area = area;
 	}
 	
-	/*
+	/**
 	 * Получение типа поля
 	 */
 	public String getType() {
-		return type.type;
+		return type.getType();
 	}
 	
-	/*
+	/**
 	 * Установка типа поля
 	 */
 	public void setType(String type) {
 		this.type = TypeField.getType(type);
 	}
 	
-	/*
+	/**
 	 * Получение комментария к пасспорту
 	 */
 	public String getComment() {
 		return comment;
 	}
 	
-	/*
+	/**
 	 * Установка комментария к пасспорту
 	 */
 	public void setComment(String comment) {

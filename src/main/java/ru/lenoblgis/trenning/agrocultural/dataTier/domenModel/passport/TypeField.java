@@ -18,6 +18,17 @@ public enum TypeField {
 		return null;
 	}
 
-	String type;
+	/**
+	 * Тип поля (словами)
+	 */
+	private String type;
+
+	/**
+	 * Получить тип поля
+	 * @return - тип поля (словами)
+	 */
+	public String getType() {
+		return type;
+	}
 
 }

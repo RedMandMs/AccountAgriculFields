@@ -6,37 +6,45 @@
   <packaging>war</packaging>
   <name>AccountAgriculFields</name>
   <description>accounting agricultural fields</description>
+  
+  <properties>
+  	<joda-time.version>2.7</joda-time.version>
+  	<spring-data-jdbc-core.version>1.1.0.RELEASE</spring-data-jdbc-core.version>
+  	<org.springframework.version>4.1.6.RELEASE</org.springframework.version>
+  	<junit.version>4.12</junit.version>
+  </properties>
+  
   <dependencies>
   	<dependency>
   		<groupId>joda-time</groupId>
   		<artifactId>joda-time</artifactId>
-  		<version>2.7</version>
+  		<version>${joda-time.version}</version>
   	</dependency>
   	<dependency>
   		<groupId>org.springframework.data</groupId>
   		<artifactId>spring-data-jdbc-core</artifactId>
-  		<version>1.1.0.RELEASE</version>
+  		<version>${spring-data-jdbc-core.version}</version>
   	</dependency>
   	<dependency>
   		<groupId>junit</groupId>
   		<artifactId>junit</artifactId>
-  		<version>4.12</version>
+  		<version>${junit.version}</version>
   	</dependency>
   	<dependency>
   		<groupId>org.springframework</groupId>
   		<artifactId>spring-web</artifactId>
   		<scope></scope>
-  		<version>4.1.6.RELEASE</version>
+  		<version>${org.springframework.version}</version>
   	</dependency>
   	<dependency>
   		<groupId>org.springframework</groupId>
   		<artifactId>spring-webmvc</artifactId>
-  		<version>4.1.6.RELEASE</version>
+  		<version>${org.springframework.version}</version>
   	</dependency>
   	<dependency>
   		<groupId>org.springframework</groupId>
   		<artifactId>spring-core</artifactId>
-  		<version>4.1.6.RELEASE</version>
+  		<version>${org.springframework.version}</version>
   	</dependency>
   </dependencies>
 </project>
