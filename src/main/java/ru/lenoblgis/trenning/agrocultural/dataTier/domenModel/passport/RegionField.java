@@ -1,12 +1,13 @@
 package ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.passport;
 
 /**
- * Перечисление 
+ * Перечисление регионов
  * @author Vilgodskiy
  *
  */
 public enum RegionField {
 	
+	UNKNOWN("Неизвестный"),
 	VSEVOLOGSK("Всеволожский р-н"),
 	PRIZEMSK("Приземский р-н");
 	
@@ -14,6 +15,11 @@ public enum RegionField {
 		this.region = region;
 	}
 	
+	/**
+	 * Получение константы перечисления региона по названию
+	 * @param title - как записано в БД
+	 * @return - константа перечисления, соответствующая названию региона
+	 */
 	public static RegionField getRegion(String title){
 		RegionField[] values = RegionField.values();
 		for (int i = 0; i < values.length; i++) {

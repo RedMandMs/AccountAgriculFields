@@ -10,34 +10,68 @@ import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.passport.Passport;
 
 public class PassportEvent {
 	
+	/**
+	 * Id событи€
+	 */
 	private int  id;
+	
+	/**
+	 * “екстовое сообщение событи€
+	 */
 	private String message;
+	
+	/**
+	 * ƒата и врем€ событи€
+	 */
 	private DateTime dateTime;
+	
+	/**
+	 * “ип событи€
+	 */
 	private TypeEvent typeEvent;	
+	
+	/**
+	 * ID автора событи€
+	 */
 	private int idAuthor;
+	
+	/**
+	 * »м€ автора событи€ (название организации)
+	 */
 	private String nameAuthor;
+	
+	/**
+	 * јвтор событи€
+	 */
 	private Owner auther;
+	
+	/**
+	 * ID паспорта, над которым было совершено событие
+	 */
 	private int idPassport;
+	
+	/**
+	 * ѕаспорт, над которым было совершено событие
+	 */
 	private Passport passport;
 	
+	/**
+	 *  онструктор по-умолчанию
+	 */
 	public PassportEvent(){
-		
-	}
-	
-	public PassportEvent(Passport passport, String eventType, DAO dao){
-		setPassportandAothor(passport, dao);
-		setType(TypeEvent.valueOf(eventType));
+		this.typeEvent = TypeEvent.UNKNOWN;
 		createMessage();
 	}
 	
 	/**
-	 * ѕрив€зка паспорта к событию и установление id пасспорта и автора (без запроса к базе данных - без ссылки на объекты, без имени)
-	 * @param passport - паспорт над которым совершаетс€ событие
+	 *  онструктор используемый при создании событи€, перед помещением его в Ѕƒ
+	 * @param passport - паспорт, над которым совершаетс€ событие
+	 * @param eventType - “ип событи€ (»м€ константы в перечислени€х)
+	 * @param dao - DAO создающий данное событие (нужен дл€ считывани€ из Ѕƒ автора событи€)
 	 */
-	private void setIdPassportandAothor(Passport passport) {
-		this.passport = passport;
-		this.idPassport = passport.getID();
-		this.idAuthor = passport.getIdOwner();
+	public PassportEvent(Passport passport, String eventType, DAO dao){
+		setPassportandAothor(passport, dao);
+		setType(TypeEvent.valueOf(eventType));
 	}
 	
 	/**
@@ -50,6 +84,7 @@ public class PassportEvent {
 		this.idAuthor = passport.getIdOwner();
 		this.auther = dao.reviewOwner(idAuthor);
 		this.nameAuthor = auther.getName();
+		createMessage();
 	}
 	
 	/**
@@ -182,6 +217,9 @@ public class PassportEvent {
 		return idAuthor;
 	}
 	
+	/**
+	 * —оздание текстового сообщени€ событи€
+	 */
 	private void createMessage(){
 		this.message = "ќрганизаци€ \"" +this.nameAuthor+ "\" (id = " + this.idAuthor + ") " +typeEvent.getWorldForMassege()+ " поле с id = " +this.idPassport;
 	}

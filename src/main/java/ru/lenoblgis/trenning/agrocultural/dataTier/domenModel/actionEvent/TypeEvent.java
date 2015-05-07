@@ -2,6 +2,7 @@ package ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.actionEvent;
 
 public enum TypeEvent {
 	
+	UNKNOWN("Неизвестно", "Неизвестно что сделало"),
 	ADDITION("Добавление поля", "Добавила"),
 	DELETION("Удаление поля", "Удалила"),
 	EDITION("Редактирование поля", "Отредактировала"),
@@ -31,6 +32,10 @@ public enum TypeEvent {
 		return type;
 	}
 
+	/**
+	 * Получения слова, используемого в текстовом сообщении о событии
+	 * @return - слово для текстового сообщения
+	 */
 	public String getWorldForMassege() {
 		return worldForMassege;
 	}

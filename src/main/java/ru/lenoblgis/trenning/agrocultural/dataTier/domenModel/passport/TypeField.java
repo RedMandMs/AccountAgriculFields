@@ -10,6 +10,11 @@ public enum TypeField {
 		this.type = type;
 	}
 	
+	/**
+	 * Получение константы перечисления типа поля по названию
+	 * @param title - название типа поля
+	 * @return - константа данного перечисления
+	 */
 	public static TypeField getType(String title){
 		TypeField[] values = TypeField.values();
 		for (int i = 0; i < values.length; i++) {

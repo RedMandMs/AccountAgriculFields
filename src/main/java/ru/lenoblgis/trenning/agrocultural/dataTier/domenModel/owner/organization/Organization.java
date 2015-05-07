@@ -4,7 +4,13 @@ import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner;
 
 public class Organization implements Owner{
 	
-	
+	/**
+	 * Конструктор, используемый при отображении
+	 * @param id - id организации
+	 * @param name - имя организации
+	 * @param inn - ИНН организации
+	 * @param addres - адрес расположения организации
+	 */
 	public Organization(int id, String name, int inn, String addres) {
 		this.id = id;
 		this.name = name;
@@ -16,6 +22,12 @@ public class Organization implements Owner{
 		}
 	}
 	
+	/**
+	 * Конструктор для записи организации в БД (без id)
+	 * @param name
+	 * @param inn
+	 * @param addres
+	 */
 	public Organization(String name, int inn, String addres) {
 		this.name = name;
 		this.inn = inn;
@@ -26,6 +38,9 @@ public class Organization implements Owner{
 		}
 	}
 	
+	/**
+	 * Конструктор по-умолчанию
+	 */
 	public Organization(){
 		this.addres = "UNKNOWN";
 	}
@@ -54,7 +69,6 @@ public class Organization implements Owner{
 	
 	
 	/**
-	 * (non-Javadoc)
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner#getId()
 	 */
 	public int getId() {
@@ -62,7 +76,6 @@ public class Organization implements Owner{
 	}
 
 	/**
-	 * (non-Javadoc)
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner#setId(int)
 	 */
 	public void setId(int id) {
@@ -70,7 +83,6 @@ public class Organization implements Owner{
 	}
 
 	/**
-	 * (non-Javadoc)
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner#getName()
 	 */
 	public String getName() {
@@ -78,7 +90,6 @@ public class Organization implements Owner{
 	}
 
 	/**
-	 * (non-Javadoc)
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner#setName(java.lang.String)
 	 */
 	public void setName(String name) {
@@ -86,7 +97,6 @@ public class Organization implements Owner{
 	}
 
 	/**
-	 * (non-Javadoc)
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner#getINN()
 	 */
 	public int getINN() {
@@ -94,7 +104,6 @@ public class Organization implements Owner{
 	}
 
 	/**
-	 * (non-Javadoc)
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner#setINN(int)
 	 */
 	public void setINN(int iNN) {
@@ -102,7 +111,6 @@ public class Organization implements Owner{
 	}
 
 	/**
-	 * (non-Javadoc)
 	 * @see dataTier.domenModel.owner.Owner#getAddres()
 	 */
 	public String getAddres() {
@@ -110,7 +118,6 @@ public class Organization implements Owner{
 	}
 
 	/**
-	 * (non-Javadoc)
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner#setAddres(java.lang.String)
 	 */
 	public void setAddres(String addres) {

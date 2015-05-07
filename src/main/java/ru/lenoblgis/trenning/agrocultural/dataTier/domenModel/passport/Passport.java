@@ -3,6 +3,16 @@ package ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.passport;
 
 public class Passport {
 	
+	/**
+	 * Конструктор для отображения паспорта из БД
+	 * @param id - id пасспорта
+	 * @param idOwner - id владельца
+	 * @param region - регион
+	 * @param cadastrNumber - кадастровый номер
+	 * @param area - площадь
+	 * @param type - тип поля
+	 * @param comment - комментарий
+	 */
 	public Passport(int id, int idOwner, String region, String cadastrNumber,
 			int area, String type, String comment) {
 		setID(id);
@@ -14,6 +24,15 @@ public class Passport {
 		setComment(comment);
 	}
 	
+	/**
+	 * Конструктор для записи пасспорта в БД (без id)
+	 * @param idOwner - id владельца
+	 * @param region - регион
+	 * @param cadastrNumber - кадастровый номер
+	 * @param area - площадь
+	 * @param type - тип поля
+	 * @param comment - комментарий
+	 */
 	public Passport(int idOwner, String region, String cadastrNumber,
 			int area, String type, String comment) {
 		setIdOwner(idOwner);
@@ -24,7 +43,11 @@ public class Passport {
 		setComment(comment);
 	}
 	
+	/**
+	 * Конструктор по-умолчанию
+	 */
 	public Passport() {
+		this.region = RegionField.UNKNOWN;
 		setComment(null);
 		setCadastrNumber(null);
 	}
@@ -53,7 +76,7 @@ public class Passport {
 	/**
 	 * Площадь поля
 	 */
-	private int area;
+	private double area;
 	
 	/**
 	 * Тип поля
@@ -129,14 +152,14 @@ public class Passport {
 	/**
 	 * Получение площади поля
 	 */
-	public int getArea() {
+	public double getArea() {
 		return area;
 	}
 	
 	/**
 	 * Установка площади поля
 	 */
-	public void setArea(int area) {
+	public void setArea(double area) {
 		this.area = area;
 	}
 	
