@@ -49,7 +49,7 @@ public class AdminSpringDAO implements DAO  {
 	}
 	
 	/**
-	 * (non-Javadoc)
+	 * 
 	 * @see dataTier.accessToDataServices.DAO#createOwner(java.util.Map)
 	 */
 	public void createOwner(Owner owner) {
@@ -59,7 +59,7 @@ public class AdminSpringDAO implements DAO  {
 	}
 
 	/**
-	 * (non-Javadoc)
+	 * 
 	 * @see dataTier.accessToDataServices.DAO#deleteOwner(java.util.Map)
 	 */
 	public void deleteOwner(int idOwner) {
@@ -68,7 +68,7 @@ public class AdminSpringDAO implements DAO  {
 	}
 
 	/**
-	 * (non-Javadoc)
+	 * 
 	 * @see dataTier.accessToDataServices.DAO#editOwner(java.util.Map)
 	 */
 	public void editOwner(Owner owner) {
@@ -78,7 +78,7 @@ public class AdminSpringDAO implements DAO  {
 	}
 
 	/**
-	 * (non-Javadoc)
+	 * 
 	 * @see dataTier.accessToDataServices.DAO#reviewOwner(java.util.Map)
 	 */
 	public Owner reviewOwner(int id) {
@@ -88,7 +88,7 @@ public class AdminSpringDAO implements DAO  {
 	}
 
 	/**
-	 * (non-Javadoc)
+	 * 
 	 * @see dataTier.accessToDataServices.DAO#createPassport(java.util.Map)
 	 */
 	public void createPassport(Passport passport) {
@@ -104,7 +104,7 @@ public class AdminSpringDAO implements DAO  {
 	}
 
 	/**
-	 * (non-Javadoc)
+	 * 
 	 * @see dataTier.accessToDataServices.DAO#deletePassport(java.util.Map)
 	 */
 	public void deletePassport(int id) {
@@ -117,7 +117,7 @@ public class AdminSpringDAO implements DAO  {
 	}
 
 	/**
-	 * (non-Javadoc)
+	 * 
 	 * @see dataTier.accessToDataServices.DAO#editPassport(java.util.Map)
 	 */
 	public void editPassport(Passport passport) {
@@ -129,7 +129,7 @@ public class AdminSpringDAO implements DAO  {
 	}
 
 	/**
-	 * (non-Javadoc)
+	 * 
 	 * @see dataTier.accessToDataServices.DAO#reviewPassport(java.util.Map)
 	 */
 	public Passport reviewPassport(int id) {
@@ -142,7 +142,7 @@ public class AdminSpringDAO implements DAO  {
 	}
 
 	/**
-	 * (non-Javadoc)
+	 * 
 	 * @see dataTier.accessToDataServices.DAO#reviewAllPassports()
 	 */
 	public List<Passport> reviewAllPassports() {
@@ -150,7 +150,7 @@ public class AdminSpringDAO implements DAO  {
 	}
 
 	/**
-	 * (non-Javadoc)
+	 * 
 	 * @see dataTier.accessToDataServices.DAO#findPassports(java.util.Map)
 	 */
 	public List<Passport> findPassports(Map<String, String> info) {
@@ -168,6 +168,9 @@ public class AdminSpringDAO implements DAO  {
 		jdbcTemplate.update(sqlQuery, values);
 	}
 	
+	public void deletePassportEvent(int idEvent){
+		jdbcTemplate.update(sqlQueries.deletePassportEvent(), new Object[]{idEvent});
+	}
 
 	/**
 	 * Получаем id паспорта организации, который является максимальным среди всех id поспартов этой организации

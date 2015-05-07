@@ -62,6 +62,12 @@ public interface SQLQueries {
 	public String createPassportEvent();
 	
 	/**
+	 * Сформировать запрос для удаления события
+	 * @return - запрос удаления события пасспорта
+	 */
+	public String deletePassportEvent();
+	
+	/**
 	 * Сформировать запрос для выборки событий
 	 * @return - запрос на выборку событий пасспортов
 	 */

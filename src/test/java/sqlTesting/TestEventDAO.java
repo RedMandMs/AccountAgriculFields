@@ -3,6 +3,7 @@ import org.junit.Test;
 
 import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.AdminSpringDAO;
 import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.DAO;
+import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.actionEvent.PassportEvent;
 import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner;
 import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.organization.Organization;
 import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.passport.Passport;
@@ -43,12 +44,20 @@ public class TestEventDAO {
 	 * Редактирование паспорта
 	 */
 	@Test
+	@Ignore
 	public void testAddEventEditToDB() {
 		DAO dao = new AdminSpringDAO();
 		
 		Passport passport = new Passport(25, 8, "Приземский р-н", "14", 25, "Фермерское хозяйство", "New Comment");
 		dao.editPassport(passport);
 		System.out.println();
+	}
+	
+	@Test
+	public void testDeleteEventToDB(){
+		
+		AdminSpringDAO dao = new AdminSpringDAO();
+		dao.deletePassportEvent(6);
 	}
 
 }

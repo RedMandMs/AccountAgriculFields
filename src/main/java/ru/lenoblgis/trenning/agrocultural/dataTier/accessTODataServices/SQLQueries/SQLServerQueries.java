@@ -115,6 +115,13 @@ public class SQLServerQueries implements SQLQueries {
 	public String createPassportEvent() {
 		return "INSERT INTO event_passport_table(id_passport, id_organization, message_event, date_time_event, type_event) VALUES(?,?,?,GETDATE(),?);";
 	}
+	
+	/**
+	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#createPassportEvent()
+	 */
+	public String deletePassportEvent() {
+		return "DELETE FROM event_passport_table WHERE id = ?;";
+	}
 
 	/**
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#reviewAllPassportEvent()
