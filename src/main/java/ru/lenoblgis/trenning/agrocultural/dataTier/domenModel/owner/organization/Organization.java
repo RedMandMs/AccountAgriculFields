@@ -16,6 +16,16 @@ public class Organization implements Owner{
 		}
 	}
 	
+	public Organization(String name, int inn, String addres) {
+		this.name = name;
+		this.inn = inn;
+		if(addres == null || addres.trim().equals("")){
+			this.addres = "UNKNOWN";
+		}else{
+			this.addres = addres;
+		}
+	}
+	
 	public Organization(){
 		this.addres = "UNKNOWN";
 	}

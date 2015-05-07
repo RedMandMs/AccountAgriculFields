@@ -1,21 +1,28 @@
 package ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices;
 
-import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries;
-import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLServerQueries;
-import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.rowMappers.OrganizationRowMapper;
-import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.rowMappers.PassportRowMapper;
-import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner;
-import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.organization.Organization;
-import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.passport.Passport;
-
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries;
+import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLServerQueries;
+import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.rowMappers.OrganizationRowMapper;
+import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.rowMappers.PassportRowMapper;
+import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.actionEvent.PassportEvent;
+import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner;
+import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.organization.Organization;
+import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.passport.Passport;
+
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 
 public class AdminSpringDAO implements DAO  {
+	
+	private static final String ADD_EVENT = "ADDITION";
+	private static final String EDIT_EVENT = "EDITION";
+	private static final String DELETE_EVENT = "DELETION";
+	private static final String REVIEW_EVENT = "REVIEW";
 
 	public AdminSpringDAO(){
 		postConstruct();
@@ -88,6 +95,12 @@ public class AdminSpringDAO implements DAO  {
 		Object [] values = new Object[]{passport.getIdOwner(), passport.getRegion(), passport.getCadastrNumber(), 
 										passport.getArea(), passport.getType(), passport.getComment()};
 		jdbcTemplate.update(sqlQueries.createPassport(), values);
+		
+		//Ќаходим только что добавленный паспорт по максимальному Id пасспорта данной организации
+		passport.setID(getPassportwithMaxId(passport.getIdOwner()));
+		
+		//—формировать событие добавлени€ пол€
+		addPassportEvent(passport, ADD_EVENT);
 	}
 
 	/**
@@ -96,16 +109,23 @@ public class AdminSpringDAO implements DAO  {
 	 */
 	public void deletePassport(int id) {
 		Object [] values = new Object[]{id};
+		Passport passport = reviewPassport(id);
 		jdbcTemplate.update(sqlQueries.deletePassport(), values);
+		
+		//—формировать событие удалени€ пол€
+		addPassportEvent(passport, DELETE_EVENT);
 	}
 
 	/**
 	 * (non-Javadoc)
-	 * @see dataTier.accessToDataServices.DAO#editFieldsPassport(java.util.Map)
+	 * @see dataTier.accessToDataServices.DAO#editPassport(java.util.Map)
 	 */
-	public void editFieldsPassport(Passport passport) {
+	public void editPassport(Passport passport) {
 		Object [] values = new Object[]{passport.getIdOwner(), passport.getRegion(), passport.getCadastrNumber(), passport.getArea(), passport.getType(), passport.getComment(), passport.getID()};
-		jdbcTemplate.update(sqlQueries.editFieldsPassport(), values);
+		jdbcTemplate.update(sqlQueries.editPassport(), values);
+
+		//—формировать событие редактировани€ пол€
+		addPassportEvent(passport, EDIT_EVENT);
 	}
 
 	/**
@@ -115,6 +135,9 @@ public class AdminSpringDAO implements DAO  {
 	public Passport reviewPassport(int id) {
 		Object[] values = new Object[] {id};
 		List<Passport> resultSet = jdbcTemplate.query(sqlQueries.reviewPassport(), values , passportRowMapper);
+
+		//—формировать событие просмотра пол€
+		addPassportEvent(resultSet.get(0), REVIEW_EVENT);
 		return resultSet.get(0);
 	}
 
@@ -132,6 +155,27 @@ public class AdminSpringDAO implements DAO  {
 	 */
 	public List<Passport> findPassports(Map<String, String> info) {
 		return jdbcTemplate.query(sqlQueries.findPassports(info), passportRowMapper);
+	}
+	
+	/**
+	 * —оздание нового событи€ в базе данных
+	 */
+	private void addPassportEvent(Passport passport, String TypeEvent) {
+		
+		PassportEvent event = new PassportEvent(passport, TypeEvent, this);
+		Object[] values = new Object[] {event.getIdPassport(), event.getIdAothor(), event.getMessage(), event.getType()};
+		String sqlQuery = sqlQueries.createPassportEvent();
+		jdbcTemplate.update(sqlQuery, values);
+	}
+	
+
+	/**
+	 * ѕолучаем id паспорта организации, который €вл€етс€ максимальным среди всех id поспартов этой организации
+	 * @param idOwner - id ¬ладельца
+	 * @return - id
+	 */
+	private int getPassportwithMaxId(int idOwner) {
+		return jdbcTemplate.queryForInt(sqlQueries.getMAXidPassportByOwner(), new Object[]{idOwner});
 	}
 
 }

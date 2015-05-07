@@ -2,13 +2,14 @@ package ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.actionEvent;
 
 public enum TypeEvent {
 	
-	ADDITION("Добавление поля"),
-	DELETION("Удаление поля"),
-	EDITION("Редактирование поля"),
-	REVIEW("Просмотр поля");
+	ADDITION("Добавление поля", "Добавила"),
+	DELETION("Удаление поля", "Удалила"),
+	EDITION("Редактирование поля", "Отредактировала"),
+	REVIEW("Просмотр поля", "Просмотрела");
 	
-	TypeEvent(String type){
+	TypeEvent(String type, String worldForMassege){
 		this.type = type;
+		this.worldForMassege = worldForMassege;
 	}
 	
 	/**
@@ -16,6 +17,12 @@ public enum TypeEvent {
 	 */
 	private String type;
 
+	
+	/**
+	 * Слово для добавление в текст события
+	 */
+	private String worldForMassege;
+	
 	/**
 	 * Получить тип события
 	 * @return - тип события
@@ -23,5 +30,11 @@ public enum TypeEvent {
 	public String getType() {
 		return type;
 	}
+
+	public String getWorldForMassege() {
+		return worldForMassege;
+	}
+	
+	
 
 }

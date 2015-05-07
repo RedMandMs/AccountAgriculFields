@@ -14,6 +14,16 @@ public class Passport {
 		setComment(comment);
 	}
 	
+	public Passport(int idOwner, String region, String cadastrNumber,
+			int area, String type, String comment) {
+		setIdOwner(idOwner);
+		setRegion(region);
+		setCadastrNumber(cadastrNumber);
+		setArea(area);
+		setType(type);		
+		setComment(comment);
+	}
+	
 	public Passport() {
 		setComment(null);
 		setCadastrNumber(null);

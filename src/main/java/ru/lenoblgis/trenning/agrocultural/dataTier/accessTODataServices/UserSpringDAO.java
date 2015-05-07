@@ -96,11 +96,11 @@ public class UserSpringDAO implements DAO{
 
 	/**
 	 * (non-Javadoc)
-	 * @see dataTier.accessToDataServices.DAO#editFieldsPassport(java.util.Map)
+	 * @see dataTier.accessToDataServices.DAO#editPassport(java.util.Map)
 	 */
-	public void editFieldsPassport(Passport passport) {
+	public void editPassport(Passport passport) {
 		Object [] values = new Object[]{passport.getIdOwner(), passport.getRegion(), passport.getCadastrNumber(), passport.getArea(), passport.getType(), passport.getComment()};
-		jdbcTemplate.update(sqlQueries.editFieldsPassport(), values);
+		jdbcTemplate.update(sqlQueries.editPassport(), values);
 	}
 
 	/**

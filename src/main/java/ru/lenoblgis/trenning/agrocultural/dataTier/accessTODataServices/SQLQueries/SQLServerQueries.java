@@ -5,7 +5,6 @@ import java.util.Map;
 public class SQLServerQueries implements SQLQueries {
 
 	/**
-	 * (non-Javadoc)
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#createOwner()
 	 */
 	public String createOwner() {
@@ -13,7 +12,6 @@ public class SQLServerQueries implements SQLQueries {
 	}
 
 	/**
-	 * (non-Javadoc)
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#deleteOwner()
 	 */
 	public String deleteOwner() {
@@ -22,7 +20,6 @@ public class SQLServerQueries implements SQLQueries {
 	}
 
 	/**
-	 * (non-Javadoc)
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#editOwner(java.util.Map)
 	 */
 	public String editOwner() {
@@ -35,7 +32,6 @@ public class SQLServerQueries implements SQLQueries {
 	}
 
 	/**
-	 * (non-Javadoc)
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#reviewOwner()
 	 */
 	public String reviewOwner() {
@@ -45,7 +41,6 @@ public class SQLServerQueries implements SQLQueries {
 	}
 
 	/**
-	 * (non-Javadoc)
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#createPassport()
 	 */
 	public String createPassport() {
@@ -53,7 +48,6 @@ public class SQLServerQueries implements SQLQueries {
 	}
 
 	/**
-	 * (non-Javadoc)
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#deletePassport()
 	 */
 	public String deletePassport() {
@@ -63,22 +57,21 @@ public class SQLServerQueries implements SQLQueries {
 
 	/**
 	 * (non-Javadoc)
-	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#editFieldsPassport(java.util.Map)
+	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#editPassport(java.util.Map)
 	 */
-	public String editFieldsPassport() {
+	public String editPassport() {
 		return "UPDATE field_table "
 				+ " SET "
-				+ " id_organization = ? "
-				+ " region = ? "
-				+ " cadastr_number = ? "
-				+ " area = ? "
-				+ " type_field = ? "
+				+ " id_organization = ?, "
+				+ " region = ?, "
+				+ " cadastr_number = ?, "
+				+ " area = ?, "
+				+ " type_field = ?, "
 				+ " comment = ? "
 				+ " WHERE (id = ?);";
 	}
 
 	/**
-	 * (non-Javadoc)
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#reviewPassport()
 	 */
 	public String reviewPassport() {
@@ -88,7 +81,6 @@ public class SQLServerQueries implements SQLQueries {
 	}
 
 	/**
-	 * (non-Javadoc)
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#reviewAllPassports()
 	 */
 	public String reviewAllPassports() {
@@ -97,7 +89,6 @@ public class SQLServerQueries implements SQLQueries {
 	}
 
 	/**
-	 * (non-Javadoc)
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#findPassports(java.util.Map)
 	 */
 	public String findPassports(Map<String, String> info) {
@@ -116,6 +107,28 @@ public class SQLServerQueries implements SQLQueries {
 		if(withoutAnd[1].equals("AND")) condition = withoutAnd[2];
 		query = query + condition + ");";
 		return query;
+	}
+
+	/**
+	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#createPassportEvent()
+	 */
+	public String createPassportEvent() {
+		return "INSERT INTO event_passport_table(id_passport, id_organization, message_event, date_time_event, type_event) VALUES(?,?,?,GETDATE(),?);";
+	}
+
+	/**
+	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#reviewAllPassportEvent()
+	 */
+	public String reviewAllPassportEvent() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#getMAXidPassportByOwner()
+	 */
+	public String getMAXidPassportByOwner(){
+		return "SELECT MAX(id) AS maxId FROM field_table WHERE id_organization = ?;";
 	}
 	
 }

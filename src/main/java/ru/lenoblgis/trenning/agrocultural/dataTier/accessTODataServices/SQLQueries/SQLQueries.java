@@ -38,7 +38,7 @@ public interface SQLQueries {
 	/**
 	 * Редактирование паспорта
 	 */
-	public String editFieldsPassport();
+	public String editPassport();
 	
 	/**
 	 * Просмотр паспорта
@@ -54,5 +54,23 @@ public interface SQLQueries {
 	 * Поиск паспорта
 	 */
 	public String findPassports(Map<String,String> info);
+	
+	/**
+	 * Сформировать запрос для вставки события
+	 * @return - запрос вставки события пасспорта
+	 */
+	public String createPassportEvent();
+	
+	/**
+	 * Сформировать запрос для выборки событий
+	 * @return - запрос на выборку событий пасспортов
+	 */
+	public String reviewAllPassportEvent();
+	
+	/**
+	 * Сформировать запрос для получения максимального id паспорта созданного организацией с переданным id
+	 * @return - запрос
+	 */
+	public String getMAXidPassportByOwner();
 	
 }
