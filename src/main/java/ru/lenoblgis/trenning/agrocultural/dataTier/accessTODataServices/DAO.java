@@ -67,6 +67,12 @@ public interface DAO {
 	List<PassportEvent> reviewAllPassportEvent();
 	
 	/**
+	 * Удаление записи события из БД
+	 * @param idEvent - id удаляемого события
+	 */
+	public void deletePassportEvent(int idEvent);
+	
+	/**
 	 * Просмотреть все записи из журнала событий в БД, принадлежащие одному владельцу
 	 * @param idOwner - id владельца
 	 * @return

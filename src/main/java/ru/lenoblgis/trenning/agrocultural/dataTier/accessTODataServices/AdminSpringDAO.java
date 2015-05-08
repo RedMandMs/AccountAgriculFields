@@ -20,20 +20,53 @@ import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 
 public class AdminSpringDAO implements DAO  {
 	
+	/**
+	 * Константа имени перечисления для добавления события - добавление поля
+	 */
 	private static final String ADD_EVENT = "ADDITION";
+	/**
+	 * Константа имени перечисления для добавления события - редактированиe поля
+	 */
 	private static final String EDIT_EVENT = "EDITION";
+	/**
+	 * Константа имени перечисления для добавления события - удаление поля
+	 */
 	private static final String DELETE_EVENT = "DELETION";
+	/**
+	 * Константа имени перечисления для добавления события - просмотр поля
+	 */
 	private static final String REVIEW_EVENT = "REVIEW";
 
+	/**
+	 * Конструктор по-умолчанию
+	 */
 	public AdminSpringDAO(){
 		postConstruct();
 	}
 	
+	/**
+	 * Объект для получения текста запросов
+	 */
 	SQLQueries sqlQueries = new SQLServerQueries();
+	/**
+	 * Объект DataSource
+	 */
 	SQLServerDataSource ds = null;
+	/**
+	 * Объект спринг для взаимодействия базы данных
+	 */
 	JdbcTemplate jdbcTemplate = null;
+	/**
+	 * Объект, отображающий пасспорт в программный объект из БД
+	 */
 	PassportRowMapper passportRowMapper = new PassportRowMapper();
+	/**
+	 * Объект, отображающий организацию в программный объект из БД
+	 */
 	OrganizationRowMapper organizationRowMapper = new OrganizationRowMapper();
+	/**
+	 * Объект, отображающий событие в программный объект из БД
+	 */
 	EventRowMapper eventRowMapper = new EventRowMapper();
 	
 	/**
