@@ -63,21 +63,21 @@
         <Member type="Constructor">public Organization()</Member>
         <Member type="Constructor">public Organization(int id, String name, int inn, String addres)</Member>
         <Member type="Constructor">public Organization(String name, int inn, String addres)</Member>
-        <Member type="Method">int getId()</Member>
-        <Member type="Method">void setId(int id)</Member>
-        <Member type="Method">String getName()</Member>
-        <Member type="Method">void setName(String name)</Member>
-        <Member type="Method">int getINN()</Member>
-        <Member type="Method">void setINN(int iNN)</Member>
-        <Member type="Method">String getAddres()</Member>
-        <Member type="Method">void setAddres(String addres)</Member>
+        <Member type="Method">public int getId()</Member>
+        <Member type="Method">public void setId(int id)</Member>
+        <Member type="Method">public String getName()</Member>
+        <Member type="Method">public void setName(String name)</Member>
+        <Member type="Method">public int getINN()</Member>
+        <Member type="Method">public void setINN(int iNN)</Member>
+        <Member type="Method">public String getAddres()</Member>
+        <Member type="Method">public void setAddres(String addres)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>PassportEvent</Name>
         <Access>Public</Access>
-        <Location left="717" top="376" />
-        <Size width="326" height="570" />
+        <Location left="739" top="376" />
+        <Size width="326" height="621" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private int id</Member>
         <Member type="Field">private String message</Member>
@@ -90,6 +90,7 @@
         <Member type="Field">private Passport passport</Member>
         <Member type="Constructor">public PassportEvent()</Member>
         <Member type="Constructor">public PassportEvent(Passport passport, String eventType, DAO dao)</Member>
+        <Member type="Constructor">public PassportEvent(int id, int id_passport, int id_organization, String message_event, DateTime date_time_event, String type_event)</Member>
         <Member type="Method">public int getId()</Member>
         <Member type="Method">public void setId(int id)</Member>
         <Member type="Method">public String getMessage()</Member>
@@ -98,7 +99,9 @@
         <Member type="Method">public void setIdAuthor(int idAuthor)</Member>
         <Member type="Method">public void setAuthor(Owner author)</Member>
         <Member type="Method">public Owner getAuthor()</Member>
+        <Member type="Method">public Owner getAuther(DAO dao)</Member>
         <Member type="Method">public Passport getPassport()</Member>
+        <Member type="Method">public Passport getPassport(DAO dao)</Member>
         <Member type="Method">public void setPassport(Passport passport)</Member>
         <Member type="Method">public void setIdPassport(int idPassport)</Member>
         <Member type="Method">public int getIdPassport()</Member>
@@ -113,23 +116,25 @@
       <Entity type="Enum">
         <Name>TypeEvent</Name>
         <Access>Public</Access>
-        <Location left="791" top="172" />
-        <Size width="162" height="129" />
+        <Location left="816" top="177" />
+        <Size width="162" height="146" />
         <Collapsed>False</Collapsed>
         <Value>ADDITION</Value>
         <Value>DELETION</Value>
         <Value>EDITION</Value>
         <Value>REVIEW</Value>
+        <Value>UNKNOWN</Value>
       </Entity>
       <Entity type="Enum">
         <Name>TypeField</Name>
         <Access>Public</Access>
         <Location left="55" top="410" />
-        <Size width="162" height="121" />
+        <Size width="162" height="129" />
         <Collapsed>False</Collapsed>
         <Value>FARM</Value>
         <Value>AGROCULTURAL</Value>
         <Value>COLLECTIVE_FARM</Value>
+        <Value>UNKNOWN</Value>
       </Entity>
       <Entity type="Enum">
         <Name>RegionField</Name>
@@ -139,6 +144,42 @@
         <Collapsed>False</Collapsed>
         <Value>VSEVOLOGSK</Value>
         <Value>PRIZEMSK</Value>
+        <Value>UNKNOWN</Value>
+      </Entity>
+      <Entity type="Class">
+        <Name>EventRowMapper</Name>
+        <Access>Public</Access>
+        <Location left="791" top="1041" />
+        <Size width="227" height="98" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public PassportEvent mapRow(ResultSet rs, int rowNum)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>OrganizationRowMapper</Name>
+        <Access>Public</Access>
+        <Location left="1114" top="1054" />
+        <Size width="227" height="106" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public Organization mapRow(ResultSet rs, int rowNum)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>PassportRowMapper</Name>
+        <Access>Public</Access>
+        <Location left="350" top="1052" />
+        <Size width="227" height="108" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public Passport mapRow(ResultSet rs, int rowNum)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>RowMapper</Name>
+        <Access>Public</Access>
+        <Location left="821" top="1222" />
+        <Size width="162" height="94" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public T mapRow(ResultSet rs, int rowNum)</Member>
       </Entity>
     </Entities>
     <Relationships>
@@ -151,18 +192,22 @@
         </BendPoint>
       </Relationship>
       <Relationship type="Dependency" first="3" second="4">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>870</X>
-          <Y>321</Y>
+          <X>898</X>
+          <Y>348</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>870</X>
+          <X>898</X>
           <Y>348</Y>
         </BendPoint>
       </Relationship>
       <Relationship type="Dependency" first="1" second="5">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -175,24 +220,74 @@
         </BendPoint>
       </Relationship>
       <Relationship type="Dependency" first="1" second="6">
-        <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
-      </Relationship>
-      <Relationship type="Dependency" first="3" second="0">
         <Label>
         </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
       </Relationship>
-      <Relationship type="Dependency" first="3" second="1">
+      <Relationship type="Association" first="3" second="0">
         <Label>
         </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="False">
-          <X>664</X>
-          <Y>470</Y>
+          <X>1104</X>
+          <Y>482</Y>
         </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="3" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>658</X>
+          <Y>482</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="9" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="7" second="3">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>898</X>
+          <Y>1016</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="8" second="2">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Realization" first="7" second="10">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="8" second="10">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="9" second="10">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
       </Relationship>
     </Relationships>
   </ProjectItem>
@@ -203,8 +298,8 @@
       <Entity type="Interface">
         <Name>DAO</Name>
         <Access>Public</Access>
-        <Location left="620" top="150" />
-        <Size width="311" height="254" />
+        <Location left="827" top="303" />
+        <Size width="311" height="264" />
         <Collapsed>False</Collapsed>
         <Member type="Method">public void createOwner(Map&lt;String,String&gt; info)</Member>
         <Member type="Method">public void deleteOwner(Map&lt;String,String&gt; info)</Member>
@@ -214,33 +309,28 @@
         <Member type="Method">public void deletePassport(Map&lt;String,String&gt; info)</Member>
         <Member type="Method">public void editFieldsPassport(Map&lt;String,String&gt; info)</Member>
         <Member type="Method">public Passport reviewPassport(Map&lt;String,String&gt; info)</Member>
-        <Member type="Method">public Passport [] reviewAllPassports()</Member>
-        <Member type="Method">public Passport [] findPassports(Map&lt;String,String&gt; info)</Member>
-      </Entity>
-      <Entity type="Class">
-        <Name>UserDAO</Name>
-        <Access>Public</Access>
-        <Location left="458" top="499" />
-        <Size width="296" height="258" />
-        <Collapsed>False</Collapsed>
-        <Member type="Method">void createOwner(Map&lt;String,String&gt; info)</Member>
-        <Member type="Method">void deleteOwner(Map&lt;String,String&gt; info)</Member>
-        <Member type="Method">void editOwner(Map&lt;String,String&gt; info)</Member>
-        <Member type="Method">Owner reviewOwner(Map&lt;String,String&gt; info)</Member>
-        <Member type="Method">void createPassport(Map&lt;String,String&gt; info)</Member>
-        <Member type="Method">void deletePassport(Map&lt;String,String&gt; info)</Member>
-        <Member type="Method">void editFieldsPassport(Map&lt;String,String&gt; info)</Member>
-        <Member type="Method">Passport reviewPassport(Map&lt;String,String&gt; info)</Member>
-        <Member type="Method">Passport [] reviewAllPassports()</Member>
-        <Member type="Method">Passport [] findPassports(Map&lt;String,String&gt; info)</Member>
-        <Modifier>None</Modifier>
+        <Member type="Method">List&lt;Passport&gt; reviewAllPassports()</Member>
+        <Member type="Method">List&lt;Passport&gt; findPassports(Map&lt;String,String&gt; info)</Member>
+        <Member type="Method">List&lt;PassportEvent&gt; reviewAllPassportEvent()</Member>
       </Entity>
       <Entity type="Class">
         <Name>AdminDAO</Name>
         <Access>Public</Access>
-        <Location left="831" top="499" />
-        <Size width="291" height="258" />
+        <Location left="319" top="234" />
+        <Size width="291" height="468" />
         <Collapsed>False</Collapsed>
+        <Member type="Field">private static final String ADD_EVENT = "ADDITION"</Member>
+        <Member type="Field">private static final String EDIT_EVENT = "EDITION"</Member>
+        <Member type="Field">private static final String DELETE_EVENT = "DELETION"</Member>
+        <Member type="Field">private static final String REVIEW_EVENT = "REVIEW"</Member>
+        <Member type="Field">SQLQueries sqlQueries</Member>
+        <Member type="Field">SQLServerDataSource ds</Member>
+        <Member type="Field">JdbcTemplate jdbcTemplate</Member>
+        <Member type="Field">PassportRowMapper passportRowMapper</Member>
+        <Member type="Field">OrganizationRowMapper organizationRowMapper</Member>
+        <Member type="Field">EventRowMapper eventRowMapper</Member>
+        <Member type="Method">public void postConstruct()</Member>
+        <Member type="Method">private int getPassportwithMaxId(int idOwner)</Member>
         <Member type="Method">void createOwner(Map&lt;String,String&gt; info)</Member>
         <Member type="Method">void deleteOwner(Map&lt;String,String&gt; info)</Member>
         <Member type="Method">void editOwner(Map&lt;String,String&gt; info)</Member>
@@ -249,30 +339,155 @@
         <Member type="Method">void deletePassport(Map&lt;String,String&gt; info)</Member>
         <Member type="Method">void editFieldsPassport(Map&lt;String,String&gt; info)</Member>
         <Member type="Method">Passport reviewPassport(Map&lt;String,String&gt; info)</Member>
-        <Member type="Method">Passport [] reviewAllPassports()</Member>
-        <Member type="Method">Passport [] findPassports(Map&lt;String,String&gt; info)</Member>
+        <Member type="Method">List&lt;Passport&gt; reviewAllPassports()</Member>
+        <Member type="Method">List&lt;Passport&gt; findPassports(Map&lt;String,String&gt; info)</Member>
+        <Member type="Method">List&lt;PassportEvent&gt; reviewAllPassportEvent()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>UserDAO</Name>
+        <Access>Public</Access>
+        <Location left="1340" top="228" />
+        <Size width="291" height="468" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private static final String ADD_EVENT = "ADDITION"</Member>
+        <Member type="Field">private static final String EDIT_EVENT = "EDITION"</Member>
+        <Member type="Field">private static final String DELETE_EVENT = "DELETION"</Member>
+        <Member type="Field">private static final String REVIEW_EVENT = "REVIEW"</Member>
+        <Member type="Field">SQLQueries sqlQueries</Member>
+        <Member type="Field">SQLServerDataSource ds</Member>
+        <Member type="Field">JdbcTemplate jdbcTemplate</Member>
+        <Member type="Field">PassportRowMapper passportRowMapper</Member>
+        <Member type="Field">OrganizationRowMapper organizationRowMapper</Member>
+        <Member type="Field">EventRowMapper eventRowMapper</Member>
+        <Member type="Method">public void postConstruct()</Member>
+        <Member type="Method">private int getPassportwithMaxId(int idOwner)</Member>
+        <Member type="Method">void createOwner(Map&lt;String,String&gt; info)</Member>
+        <Member type="Method">void deleteOwner(Map&lt;String,String&gt; info)</Member>
+        <Member type="Method">void editOwner(Map&lt;String,String&gt; info)</Member>
+        <Member type="Method">Owner reviewOwner(Map&lt;String,String&gt; info)</Member>
+        <Member type="Method">void createPassport(Map&lt;String,String&gt; info)</Member>
+        <Member type="Method">void deletePassport(Map&lt;String,String&gt; info)</Member>
+        <Member type="Method">void editFieldsPassport(Map&lt;String,String&gt; info)</Member>
+        <Member type="Method">Passport reviewPassport(Map&lt;String,String&gt; info)</Member>
+        <Member type="Method">List&lt;Passport&gt; reviewAllPassports()</Member>
+        <Member type="Method">List&lt;Passport&gt; findPassports(Map&lt;String,String&gt; info)</Member>
+        <Member type="Method">List&lt;PassportEvent&gt; reviewAllPassportEvent()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>SQLQueries</Name>
+        <Access>Public</Access>
+        <Location left="827" top="710" />
+        <Size width="267" height="332" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public String createOwner()</Member>
+        <Member type="Method">public String deleteOwner()</Member>
+        <Member type="Method">public String editOwner()</Member>
+        <Member type="Method">public String reviewOwner()</Member>
+        <Member type="Method">public String createPassport()</Member>
+        <Member type="Method">public String deletePassport()</Member>
+        <Member type="Method">public String editPassport()</Member>
+        <Member type="Method">public String reviewPassport()</Member>
+        <Member type="Method">public String reviewAllPassports()</Member>
+        <Member type="Method">public String findPassports(Map&lt;String,String&gt; info)</Member>
+        <Member type="Method">public String createPassportEvent()</Member>
+        <Member type="Method">public String deletePassportEvent()</Member>
+        <Member type="Method">public String reviewAllPassportEvent()</Member>
+        <Member type="Method">public String reviwAllOwnerPassportEvent()</Member>
+        <Member type="Method">public String getMAXidPassportByOwner()</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>SQLServerQueries</Name>
+        <Access>Public</Access>
+        <Location left="1225" top="748" />
+        <Size width="267" height="332" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">String createOwner()</Member>
+        <Member type="Method">String deleteOwner()</Member>
+        <Member type="Method">String editOwner()</Member>
+        <Member type="Method">String reviewOwner()</Member>
+        <Member type="Method">String createPassport()</Member>
+        <Member type="Method">String deletePassport()</Member>
+        <Member type="Method">String editPassport()</Member>
+        <Member type="Method">String reviewPassport()</Member>
+        <Member type="Method">String reviewAllPassports()</Member>
+        <Member type="Method">String findPassports(Map&lt;String,String&gt; info)</Member>
+        <Member type="Method">String createPassportEvent()</Member>
+        <Member type="Method">String deletePassportEvent()</Member>
+        <Member type="Method">String reviewAllPassportEvent()</Member>
+        <Member type="Method">String reviwAllOwnerPassportEvent()</Member>
+        <Member type="Method">String getMAXidPassportByOwner()</Member>
         <Modifier>None</Modifier>
       </Entity>
     </Entities>
     <Relationships>
       <Relationship type="Realization" first="1" second="0">
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>686</X>
+          <Y>414</Y>
+        </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>768</X>
-          <Y>437</Y>
+          <X>782</X>
+          <Y>414</Y>
         </BendPoint>
       </Relationship>
       <Relationship type="Realization" first="2" second="0">
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>911</X>
-          <Y>474</Y>
+          <X>1265</X>
+          <Y>414</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>785</X>
-          <Y>434</Y>
+          <X>1187</X>
+          <Y>414</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="1" second="3">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>743</X>
+          <Y>643</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>960</X>
+          <Y>666</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="2" second="3">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1235</X>
+          <Y>643</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>960</X>
+          <Y>668</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Realization" first="4" second="3">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1170</X>
+          <Y>912</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1154</X>
+          <Y>912</Y>
         </BendPoint>
       </Relationship>
     </Relationships>

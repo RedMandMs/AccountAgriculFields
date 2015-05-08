@@ -75,12 +75,14 @@ public class TestEventDAO {
 		AdminSpringDAO dao = new AdminSpringDAO();
 		List<PassportEvent> events = new ArrayList<PassportEvent>();
 		events = dao.reviewAllPassportEvent();
+		Assert.assertEquals(8, events.size());
 	}
 	
 	/**
 	 * Просмотр событий одного владельца
 	 */
 	@Test
+	@Ignore
 	public void testReviwAllOwnersEvents() {
 		AdminSpringDAO dao = new AdminSpringDAO();
 		List<PassportEvent> events = new ArrayList<PassportEvent>();

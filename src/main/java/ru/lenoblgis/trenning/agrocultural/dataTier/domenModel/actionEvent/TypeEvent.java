@@ -1,7 +1,5 @@
 package ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.actionEvent;
 
-import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.passport.RegionField;
-
 public enum TypeEvent {
 	
 	UNKNOWN("Неизвестно", "Неизвестно что сделало"),
