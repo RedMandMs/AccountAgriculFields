@@ -9,7 +9,6 @@ import org.springframework.jdbc.core.RowMapper;
 public class OrganizationRowMapper implements RowMapper<Organization> {
 
 	/**
-	 * (non-Javadoc)
 	 * @see org.springframework.jdbc.core.RowMapper#mapRow(java.sql.ResultSet, int)
 	 */
 	public Organization mapRow(ResultSet rs, int rowNum) throws SQLException {

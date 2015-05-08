@@ -1,5 +1,7 @@
 package ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.actionEvent;
 
+import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.passport.RegionField;
+
 public enum TypeEvent {
 	
 	UNKNOWN("Неизвестно", "Неизвестно что сделало"),
@@ -38,6 +40,19 @@ public enum TypeEvent {
 	 */
 	public String getWorldForMassege() {
 		return worldForMassege;
+	}
+	
+	/**
+	 * Получение константы перечисления типа по названию
+	 * @param title - как записано в БД
+	 * @return - константа перечисления, соответствующая названию типа
+	 */
+	public static TypeEvent getTypeEvent(String title){
+		TypeEvent[] values = TypeEvent.values();
+		for (int i = 0; i < values.length; i++) {
+			if(title.equals(values[i].type)) return values[i];
+		}
+		return null;
 	}
 	
 	

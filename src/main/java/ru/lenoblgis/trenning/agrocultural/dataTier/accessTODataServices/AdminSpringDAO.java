@@ -1,6 +1,6 @@
 package ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries;
 import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLServerQueries;
+import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.rowMappers.EventRowMapper;
 import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.rowMappers.OrganizationRowMapper;
 import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.rowMappers.PassportRowMapper;
 import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.actionEvent.PassportEvent;
@@ -33,6 +34,7 @@ public class AdminSpringDAO implements DAO  {
 	JdbcTemplate jdbcTemplate = null;
 	PassportRowMapper passportRowMapper = new PassportRowMapper();
 	OrganizationRowMapper organizationRowMapper = new OrganizationRowMapper();
+	EventRowMapper eventRowMapper = new EventRowMapper();
 	
 	/**
 	 * Подключение DataSource к базе данных и создание jdbcTemplate
@@ -168,8 +170,30 @@ public class AdminSpringDAO implements DAO  {
 		jdbcTemplate.update(sqlQuery, values);
 	}
 	
+	/**
+	 * Удаление записи события из БД
+	 * @param idEvent - id удаляемого события
+	 */
 	public void deletePassportEvent(int idEvent){
 		jdbcTemplate.update(sqlQueries.deletePassportEvent(), new Object[]{idEvent});
+	}
+
+	/**
+	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.DAO#reviewAllPassportEvent()
+	 */
+	public List<PassportEvent> reviewAllPassportEvent(){
+		List<PassportEvent> events = new ArrayList<PassportEvent>();
+		events = jdbcTemplate.query(sqlQueries.reviewAllPassportEvent(), eventRowMapper);
+		return events;
+	}
+	
+	/**
+	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.DAO#reviwAllOwnerEvents(int)
+	 */
+	public List<PassportEvent> reviwAllOwnerEvents(int idOwner) {
+		List<PassportEvent> events = new ArrayList<PassportEvent>();
+		events = jdbcTemplate.query(sqlQueries.reviwAllOwnerPassportEvent(), new Object[]{idOwner}, eventRowMapper);
+		return events;
 	}
 
 	/**

@@ -127,8 +127,14 @@ public class SQLServerQueries implements SQLQueries {
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#reviewAllPassportEvent()
 	 */
 	public String reviewAllPassportEvent() {
-		// TODO Auto-generated method stub
-		return null;
+		return "SELECT * FROM event_passport_table";
+	}
+
+	/**
+	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#reviwAllOwnerPassportEvent()
+	 */
+	public String reviwAllOwnerPassportEvent() {
+		return "SELECT * FROM event_passport_table WHERE id_organization = ?;";
 	}
 
 	/**

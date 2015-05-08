@@ -1,17 +1,18 @@
 package ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices;
 
-import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries;
-import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLServerQueries;
-import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.rowMappers.OrganizationRowMapper;
-import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.rowMappers.PassportRowMapper;
-import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner;
-import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.organization.Organization;
-import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.passport.Passport;
-
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+
+import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries;
+import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLServerQueries;
+import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.rowMappers.OrganizationRowMapper;
+import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.rowMappers.PassportRowMapper;
+import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.actionEvent.PassportEvent;
+import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner;
+import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.organization.Organization;
+import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.passport.Passport;
 
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 
@@ -127,6 +128,16 @@ public class UserSpringDAO implements DAO{
 	 */
 	public List<Passport> findPassports(Map<String, String> info) {
 		return jdbcTemplate.query(sqlQueries.findPassports(info), passportRowMapper);
+	}
+
+	public List<PassportEvent> reviewAllPassportEvent() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<PassportEvent> reviwAllOwnerEvents(int idOwner) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

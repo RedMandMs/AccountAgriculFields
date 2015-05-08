@@ -1,9 +1,11 @@
 package ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices;
 
-import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner;
-import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.passport.Passport;
 import java.util.List;
 import java.util.Map;
+
+import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.actionEvent.PassportEvent;
+import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner;
+import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.passport.Passport;
 
 public interface DAO {
 	
@@ -58,5 +60,17 @@ public interface DAO {
 	 */
 	List<Passport> findPassports(Map<String,String> info);
 	
+	/**
+	 * Просмотреть все записи из журнала событий в БД
+	 * @return - список объектов события
+	 */
+	List<PassportEvent> reviewAllPassportEvent();
+	
+	/**
+	 * Просмотреть все записи из журнала событий в БД, принадлежащие одному владельцу
+	 * @param idOwner - id владельца
+	 * @return
+	 */
+	List<PassportEvent> reviwAllOwnerEvents(int idOwner);
 	
 }

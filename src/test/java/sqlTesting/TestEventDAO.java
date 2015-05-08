@@ -1,11 +1,13 @@
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
 import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.AdminSpringDAO;
 import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.DAO;
 import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.actionEvent.PassportEvent;
-import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner;
-import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.organization.Organization;
 import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.passport.Passport;
 
 /**
@@ -53,11 +55,36 @@ public class TestEventDAO {
 		System.out.println();
 	}
 	
+	/**
+	 * Удаления события
+	 */
 	@Test
+	@Ignore
 	public void testDeleteEventToDB(){
 		
 		AdminSpringDAO dao = new AdminSpringDAO();
 		dao.deletePassportEvent(6);
 	}
-
+	
+	/**
+	 * Просмотр всех событий
+	 */
+	@Test
+	@Ignore
+	public void testReviewAllEvents(){
+		AdminSpringDAO dao = new AdminSpringDAO();
+		List<PassportEvent> events = new ArrayList<PassportEvent>();
+		events = dao.reviewAllPassportEvent();
+	}
+	
+	/**
+	 * Просмотр событий одного владельца
+	 */
+	@Test
+	public void testReviwAllOwnersEvents() {
+		AdminSpringDAO dao = new AdminSpringDAO();
+		List<PassportEvent> events = new ArrayList<PassportEvent>();
+		events = dao.reviwAllOwnerEvents(8);
+		Assert.assertEquals(events.size(), 8);
+	}
 }

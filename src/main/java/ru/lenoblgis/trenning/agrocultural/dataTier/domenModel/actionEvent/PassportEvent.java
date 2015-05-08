@@ -1,10 +1,10 @@
 package ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.actionEvent;
 
-import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.DAO;
-
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
+import org.joda.time.LocalTime;
 
+import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.DAO;
 import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner;
 import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.passport.Passport;
 
@@ -64,6 +64,24 @@ public class PassportEvent {
 	}
 	
 	/**
+	 *  онструктор дл€ отображени€ записей в программное представление
+	 * @param id - id событи€
+	 * @param id_passport - id паспорта над которым было совершено событие
+	 * @param id_organization - id организации выполнившей действи€ по данному событию
+	 * @param message_event - текстовое сообщение событи€
+	 * @param date_time_event - ƒата и врем€ событи€
+	 * @param type_event - тип событи€
+	 */
+	public PassportEvent(int id, int id_passport, int id_organization, String message_event, DateTime date_time_event,  String type_event){
+		this.id = id;
+		this.idPassport = id_passport;
+		this.idAuthor = id_organization;
+		this.message = message_event;
+		setDataTime(date_time_event);
+		setType(type_event);
+	}
+	
+	/**
 	 *  онструктор используемый при создании событи€, перед помещением его в Ѕƒ
 	 * @param passport - паспорт, над которым совершаетс€ событие
 	 * @param eventType - “ип событи€ (»м€ константы в перечислени€х)
@@ -116,6 +134,13 @@ public class PassportEvent {
 	}
 	
 	/**
+	 * ”становить тип событи€
+	 */
+	public void setType(String typeEvent){
+		this.typeEvent = TypeEvent.getTypeEvent(typeEvent);
+	}
+	
+	/**
 	 * ”становить id автора событи€
 	 */
 	public void setIdAuthor(int idAuthor){
@@ -153,7 +178,11 @@ public class PassportEvent {
 	/**
 	 * ѕролучить врем€ событи€
 	 */
-	public LocalDate getTime(){
+	public LocalTime getTime(){
+		return dateTime.toLocalTime();
+	}
+	
+	public LocalDate getDate(){
 		return dateTime.toLocalDate();
 	}
 	
@@ -186,8 +215,19 @@ public class PassportEvent {
 	}
 
 	/**
-	 * ѕолучить автор событи€
-	 * @return - автор 
+	 * –екомендуемый способ получить автора событи€ (на случай если он не был зарание выбран из Ѕƒ)
+	 * @return - автор событи€
+	 */
+	public Owner getAuther(DAO dao) {
+		if(this.auther == null){
+			this.auther = dao.reviewOwner(idAuthor);
+		}
+			return auther;
+	}
+	
+	/**
+	 * Ќерекомендуемый способ получени€ пасспорта событи€ - работает только, когда автор бы выбран из Ѕƒ
+	 * @return - автор событи€
 	 */
 	public Owner getAuther() {
 		return auther;
@@ -202,7 +242,18 @@ public class PassportEvent {
 	}
 
 	/**
-	 * ѕолучить паспорт дл€ которого создано событие
+	 * –екомендуемый способ получить автора событи€ (на случай если он не был зарание выбран из Ѕƒ)
+	 * @return - автор событи€
+	 */
+	public Passport getPassport(DAO dao) {
+		if(this.passport == null){
+			this.passport = dao.reviewPassport(idPassport);
+		}
+			return passport;
+	}
+	
+	/**
+	 *  Ќерекомендуемый способ получить паспорт дл€ которого создано событие
 	 * @return - паспорт
 	 */
 	public Passport getPassport() {
