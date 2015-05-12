@@ -42,6 +42,7 @@ public class MainTestWithoutBack {
 	 * Тестирование просмотра пасспорта поля
 	 */
 	@Test
+	@Ignore
 	public void testReviewPassport(){
 		AdminSpringDAO adminDao = new AdminSpringDAO();
 		adminDao.reviewPassport(12);		

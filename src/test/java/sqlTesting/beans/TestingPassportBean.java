@@ -9,8 +9,8 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import ru.lenoblgis.trenning.agrocultural.buisnessTier.configs.ProviderServiceBeans;
 import ru.lenoblgis.trenning.agrocultural.buisnessTier.services.PassportService;
-import ru.lenoblgis.trenning.agrocultural.buisnessTier.services.ProviderServiceBeans;
 
 
 public class TestingPassportBean {
@@ -24,9 +24,9 @@ public class TestingPassportBean {
 		ApplicationContext context = new AnnotationConfigApplicationContext(ProviderServiceBeans.class);
         PassportService passportService = (PassportService) context.getBean("passportService");
         Map<String, String> passportInfo = new HashMap<String, String>();
-		passportInfo.put("id_organization", "24");
+		passportInfo.put("id_organization", "8");
 		passportInfo.put("region", "Всеволожский р-н");
-		passportInfo.put("cadastr_number", "23");
+		passportInfo.put("cadastr_number", "25");
 		passportInfo.put("area", "33");
 		passportInfo.put("type_field", "Сельскохозяйственное производство");
 		passportInfo.put("comment", "Hello world!");
@@ -37,6 +37,7 @@ public class TestingPassportBean {
 	 * Просмотр пасспорта
 	 */
 	@Test
+	@Ignore
 	public void testReviewPassport() {
 		ApplicationContext context = new AnnotationConfigApplicationContext(ProviderServiceBeans.class);
         PassportService passportService = (PassportService) context.getBean("passportService");

@@ -9,8 +9,8 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import ru.lenoblgis.trenning.agrocultural.buisnessTier.configs.ProviderServiceBeans;
 import ru.lenoblgis.trenning.agrocultural.buisnessTier.services.OwnerService;
-import ru.lenoblgis.trenning.agrocultural.buisnessTier.services.ProviderServiceBeans;
 
 public class TestingOwnerBean {
 

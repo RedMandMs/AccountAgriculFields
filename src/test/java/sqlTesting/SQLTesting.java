@@ -2,6 +2,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.AdminSpringDAO;
@@ -13,6 +14,7 @@ import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.passport.Passport;
 public class SQLTesting {
 	
 	@Test
+	@Ignore
 	public void testFindFieldQuery(){
 		SQLQueries sqlQueries = new SQLServerQueries();
 		Map<String, String> queryInfo = new HashMap<String, String>();
@@ -29,6 +31,7 @@ public class SQLTesting {
 	}
 	
 	@Test
+	@Ignore
 	public void testReviewAllPassports(){
 		SQLQueries sqlQueries = new SQLServerQueries();
 	
@@ -36,6 +39,7 @@ public class SQLTesting {
 	}
 	
 	@Test
+	@Ignore
 	public void testWorkingWithBD(){
 		//UserSpringDAO userDao = new UserSpringDAO();
 		AdminSpringDAO adminDao = new AdminSpringDAO();
