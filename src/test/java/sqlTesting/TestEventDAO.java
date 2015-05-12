@@ -86,7 +86,7 @@ public class TestEventDAO {
 	public void testReviwAllOwnersEvents() {
 		AdminSpringDAO dao = new AdminSpringDAO();
 		List<PassportEvent> events = new ArrayList<PassportEvent>();
-		events = dao.reviwAllOwnerEvents(8);
+		events = dao.reviewAllOwnerEvents(8);
 		Assert.assertEquals(events.size(), 8);
 	}
 }

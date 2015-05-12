@@ -77,6 +77,6 @@ public interface DAO {
 	 * @param idOwner - id владельца
 	 * @return
 	 */
-	List<PassportEvent> reviwAllOwnerEvents(int idOwner);
+	List<PassportEvent> reviewAllOwnerEvents(int idOwner);
 	
 }

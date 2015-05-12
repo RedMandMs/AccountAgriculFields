@@ -200,12 +200,6 @@ public class PassportEvent {
 		return typeEvent.getType();
 	}
 	
-	/**
-	 * ѕолучить id автора событи€
-	 */
-	public int getIdAothor(){
-		return idAuthor;
-	}
 	
 	/**
 	 * ѕолучить id паспорт над которым было совершино событие

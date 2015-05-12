@@ -218,9 +218,9 @@ public class UserSpringDAO implements DAO{
 	}
 	
 	/**
-	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.DAO#reviwAllOwnerEvents(int)
+	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.DAO#reviewAllOwnerEvents(int)
 	 */
-	public List<PassportEvent> reviwAllOwnerEvents(int idOwner) {
+	public List<PassportEvent> reviewAllOwnerEvents(int idOwner) {
 		List<PassportEvent> events = new ArrayList<PassportEvent>();
 		events = jdbcTemplate.query(sqlQueries.reviwAllOwnerPassportEvent(), new Object[]{idOwner}, eventRowMapper);
 		return events;
