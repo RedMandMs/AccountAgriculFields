@@ -11,7 +11,7 @@ import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.AdminSpr
 import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.DAO;
 import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.actionEvent.PassportEvent;
 
-@Component("componentService")
+@Component("eventService")
 public class EventService {
 
 	/**
@@ -40,6 +40,7 @@ public class EventService {
 			eventInfo.put("message", event.getMessage());
 			eventInfo.put("date_time_event", event.getDate() + "  " + event.getTime().toString());
 			eventInfo.put("type_event", event.getType());
+			listEvents.add(eventInfo);
 		}
 		
 		return listEvents;
@@ -67,6 +68,7 @@ public class EventService {
 			eventInfo.put("message", event.getMessage());
 			eventInfo.put("date_time_event", event.getDate() + "  " + event.getTime().toString());
 			eventInfo.put("type_event", event.getType());
+			listEvents.add(eventInfo);
 		}
 		
 		return listEvents;
