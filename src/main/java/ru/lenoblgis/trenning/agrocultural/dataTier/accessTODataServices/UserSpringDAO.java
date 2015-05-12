@@ -196,7 +196,7 @@ public class UserSpringDAO implements DAO{
 	 */
 	private void addPassportEvent(Passport passport, String TypeEvent) {
 		PassportEvent event = new PassportEvent(passport, TypeEvent, this);
-		Object[] values = new Object[] {event.getIdPassport(), event.getIdAothor(), event.getMessage(), event.getType()};
+		Object[] values = new Object[] {event.getIdPassport(), event.getIdAuthor(), event.getMessage(), event.getType()};
 		String sqlQuery = sqlQueries.createPassportEvent();
 		jdbcTemplate.update(sqlQuery, values);
 	}
