@@ -38,10 +38,12 @@ public class MainTestWithoutBack {
 		
 	}
 	
+	/**
+	 * Тестирование просмотра пасспорта поля
+	 */
 	@Test
 	public void testReviewPassport(){
 		AdminSpringDAO adminDao = new AdminSpringDAO();
-		
 		adminDao.reviewPassport(12);		
 	}
 

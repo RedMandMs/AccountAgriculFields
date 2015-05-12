@@ -18,4 +18,8 @@ public class ProviderBeans {
     	return new PassportService();
     }
     
+    @Bean
+    EventService getEventService(){
+    	return new EventService();
+    }
 }

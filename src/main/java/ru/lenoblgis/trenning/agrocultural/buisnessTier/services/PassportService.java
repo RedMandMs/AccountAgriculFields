@@ -13,7 +13,7 @@ import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.AdminSpr
 import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.DAO;
 import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.passport.Passport;
 
-@Component
+@Component("passportService")
 public class PassportService {
 	
 	/**
@@ -135,7 +135,7 @@ public class PassportService {
 	 * Получение реестра паспортов
 	 * @return - список с информацией о каждом пасспорте("id" - id пасспорта, "id_organization" - id организации, region - регион, cadastr_number - кадастровый номер, area - площадь, type_field - тип поля, comment - комментарий)
 	 */
-	public List<Map<String, String>> getAllPassport() {
+	public List<Map<String, String>> reviewAllPassport() {
 		List<Map<String,String>> listPasportsInfo = new ArrayList<Map<String,String>>();
 	
 		List<Passport> passports = dao.reviewAllPassports();
