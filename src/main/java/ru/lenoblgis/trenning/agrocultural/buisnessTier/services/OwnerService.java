@@ -1,21 +1,44 @@
 package ru.lenoblgis.trenning.agrocultural.buisnessTier.services;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
+import org.springframework.dao.DuplicateKeyException;
+import org.springframework.stereotype.Component;
+
+import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.AdminSpringDAO;
+import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.DAO;
+import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner;
+import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.organization.Organization;
+
+@Component
 public class OwnerService {
 
+	/**
+	 * DAO для работы с базой данных
+	 */
+	DAO dao = new AdminSpringDAO();
+	
 	/**
 	 * Добавить нового владельца в БД
 	 * @param info - информация о добавляемом владельце("name" - имя организации, inn - ИНН, address_org - адрес организации)
  	 * @return - результаты работы ("success" - успешено ли был добавлен владелец)
 	 */
-	public Map<String, String> createPassport(Map<String, String> info){
+	public Map<String, String> createOwner(Map<String, String> info){
 		Map<String, String> workresults = new HashMap<String, String>();
 		
-		//TODO
+		String nameOrg = info.get("name");
+		Integer inn = Integer.valueOf(info.get("inn"));
+		String addresOrg = info.get("address_org");
+		Owner newOwner = new Organization(nameOrg, inn, addresOrg);
+		try{
+			dao.createOwner(newOwner);
+			workresults.put("success", "true");
+		}catch(DuplicateKeyException duplicateEx){
+			//TODO:
+			System.out.println("Дубликаты!!!");
+			workresults.put("success", "false");
+		}
 		
 		return workresults;
 	}
@@ -23,66 +46,68 @@ public class OwnerService {
 	
 	/**
 	 * Редактировать владельца
-	 * @param info - информация о редактируемром паспорте("id" - id пасспорта, "id_organization" - id организации, region - регион, cadastr_number - кадастровый номер, area - площадь, type_field - тип поля, comment - комментарий)
- 	 * @return - результаты работы ("success" - успешено ли был отредактирован паспорт)
+	 * @param info - информация о редактируемром владельце("id" - id владельца, "name" - имя организации, inn - ИНН, address_org - адрес организации)
+ 	 * @return - результаты работы ("success" - успешено ли был отредактирован владелец)
 	 */
-	public Map<String, String> editPassport(Map<String, String> info){
+	public Map<String, String> editOwner(Map<String, String> info){
 		Map<String, String> workresults = new HashMap<String, String>();
 		
-		//TODO
+		Integer id = Integer.valueOf(info.get("id"));
+		String nameOrg = info.get("name");
+		Integer inn = Integer.valueOf(info.get("inn"));
+		String addresOrg = info.get("address_org");
+		Owner editingOwner = new Organization(id, nameOrg, inn, addresOrg);
+		try{
+			dao.editOwner(editingOwner);
+			workresults.put("success", "true");
+		}catch(DuplicateKeyException duplicateEx){
+			//TODO:
+			System.out.println("Дубликаты!!!");
+			workresults.put("success", "false");
+		}
 		
 		return workresults;
 	}
 	
 	/**
-	 * Просмотреть пасспорт
-	 * @param passportId - id паспорта
-	 * @return - информация о просматриваемом паспорте ("isExist" - существует ли такой пасспорт, "id" - id пасспорта, "id_organization" - id организации, region - регион, cadastr_number - кадастровый номер, area - площадь, type_field - тип поля, comment - комментарий)
+	 * Просмотреть владельца
+	 * @param ownerId - id владельца
+	 * @return - информация о просматриваемом владельце ("isExist" - существует ли такой владелец, "id" - id владельца, "name" - имя организации, inn - ИНН, address_org - адрес организации)
 	 */
-	public Map<String, String> reviewPassport(int passportId){
-		Map<String, String> passportInfo = new HashMap<String, String>();
+	public Map<String, String> reviewOwner(int ownerId){
+		Map<String, String> ownerInfo = new HashMap<String, String>();
 		
-		//TODO
+		try{
+			Owner reviewOwner = dao.reviewOwner(ownerId);
+			ownerInfo.put("id", String.valueOf(reviewOwner.getId()));
+			ownerInfo.put("name", reviewOwner.getName());
+			ownerInfo.put("inn", String.valueOf(reviewOwner.getINN()));
+			ownerInfo.put("address_org", reviewOwner.getAddres());
+			ownerInfo.put("isExist", "true");
+		}
+		catch (IndexOutOfBoundsException ex) {
+			ownerInfo.put("isExist", "false");
+		}
 		
-		return passportInfo;
+		return ownerInfo;
 	}
 	
 	/**
-	 * Удалить пасспорт
-	 * @param passportId - id паспорта
-	 * @return - результаты работы ("success" - успешено ли был удалён паспорт)
+	 * Удалить владельца
+	 * @param ownerId - id владельца
+	 * @return - результаты работы ("success" - успешено ли был удалён владелец)
 	 */
-	public Map<String, String> deletePassport(int passportId){
+	public Map<String, String> deleteOwner(int ownerId){
 		Map<String, String> workresults = new HashMap<String, String>();
-		
-		//TODO
-		
+		try{
+			dao.reviewOwner(ownerId);
+			dao.deleteOwner(ownerId);
+			workresults.put("success", "true");
+		}
+		catch (IndexOutOfBoundsException ex) {
+			workresults.put("success", "false");
+		}
 		return workresults;
 	}
-	
-	/**
-	 * Получение реестра паспортов
-	 * @return - список с информацией о каждом пасспорте("id" - id пасспорта, "id_organization" - id организации, region - регион, cadastr_number - кадастровый номер, area - площадь, type_field - тип поля, comment - комментарий)
-	 */
-	public List<Map<String, String>> getAllPassport() {
-		List<Map<String,String>> listPasportsInfo = new ArrayList<Map<String,String>>();
 		
-		//TODO
-		
-		return listPasportsInfo;
-	}
-	
-	/**
-	 * Поиск паспортов по информации о них
-	 * @param info - информация о паспортах, которые нужно найти("id" - id пасспорта, "id_organization" - id организации, region - регион, cadastr_number - кадастровый номер, area - площадь, type_field - тип поля, comment - комментарий)
-	 * @return - список с информацией о каждом найденом паспорте("id" - id пасспорта, "id_organization" - id организации, region - регион, cadastr_number - кадастровый номер, area - площадь, type_field - тип поля, comment - комментарий)
-	 */
-	public List<Map<String, String>> findPassports(Map<String, String> info) {
-		List<Map<String,String>> listPasportsInfo = new ArrayList<Map<String,String>>();
-		
-		//TODO
-		
-		return listPasportsInfo;
-	}
-	
 }

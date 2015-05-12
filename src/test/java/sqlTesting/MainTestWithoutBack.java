@@ -1,17 +1,23 @@
+import org.junit.Test;
+
+import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.AdminSpringDAO;
+import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner;
+import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.organization.Organization;
+
 
 
 public class MainTestWithoutBack {
 	
-	public static void main(String[] args){
-		/*UserSpringDAO userDao = new UserSpringDAO();
-		AdminSpringDAO adminDao = new AdminSpringDAO();*/
+	@Test
+	public void testCreateOwner(){
+		/*UserSpringDAO userDao = new UserSpringDAO();*/
+		AdminSpringDAO adminDao = new AdminSpringDAO();
 		
-		/*Map<String, String> infoOwner = new HashMap<String, String>();
-		infoOwner.put("name", "LenOblGis2");
-		infoOwner.put("inn", "123456");
-		infoOwner.put("address_org", "ul Torgkovskaya 15");
-		adminDao.createOwner(infoOwner);*/
-		
+		Owner newOwner = new Organization("LenOblGis3", 12345, "Hi");		
+		adminDao.reviewOwner(9);
+		System.out.println("Hi\1");
+		adminDao.deleteOwner(9);
+		System.out.println("Hi\2");
 		/*Map<String, String> infoPassport = new HashMap<String, String>();
 		infoPassport.put("id_organization", "7");
 		infoPassport.put("region", "Vsevologskiy");

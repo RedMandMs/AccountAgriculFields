@@ -123,7 +123,7 @@ public class UserSpringDAO implements DAO{
 
 	/**
 	 * 
-	 * @see dataTier.accessToDataServices.DAO#createPassport(java.util.Map)
+	 * @see dataTier.accessToDataServices.DAO#createOwner(java.util.Map)
 	 */
 	public void createPassport(Passport passport) {
 		Object [] values = new Object[]{passport.getIdOwner(), passport.getRegion(), passport.getCadastrNumber(), 
@@ -139,7 +139,7 @@ public class UserSpringDAO implements DAO{
 
 	/**
 	 * 
-	 * @see dataTier.accessToDataServices.DAO#deletePassport(java.util.Map)
+	 * @see dataTier.accessToDataServices.DAO#deleteOwner(java.util.Map)
 	 */
 	public void deletePassport(int id) {
 		Object [] values = new Object[]{id};
@@ -152,7 +152,7 @@ public class UserSpringDAO implements DAO{
 
 	/**
 	 * 
-	 * @see dataTier.accessToDataServices.DAO#editPassport(java.util.Map)
+	 * @see dataTier.accessToDataServices.DAO#editOwner(java.util.Map)
 	 */
 	public void editPassport(Passport passport) {
 		Object [] values = new Object[]{passport.getIdOwner(), passport.getRegion(), passport.getCadastrNumber(), passport.getArea(), passport.getType(), passport.getComment(), passport.getID()};
@@ -164,7 +164,7 @@ public class UserSpringDAO implements DAO{
 
 	/**
 	 * 
-	 * @see dataTier.accessToDataServices.DAO#reviewPassport(java.util.Map)
+	 * @see dataTier.accessToDataServices.DAO#reviewOwner(java.util.Map)
 	 */
 	public Passport reviewPassport(int id) {
 		Object[] values = new Object[] {id};
