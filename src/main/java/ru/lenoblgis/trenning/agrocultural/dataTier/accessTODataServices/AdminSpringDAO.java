@@ -24,14 +24,17 @@ public class AdminSpringDAO implements DAO  {
 	 * Константа имени перечисления для добавления события - добавление поля
 	 */
 	private static final String ADD_EVENT = "ADDITION";
+	
 	/**
 	 * Константа имени перечисления для добавления события - редактированиe поля
 	 */
 	private static final String EDIT_EVENT = "EDITION";
+	
 	/**
 	 * Константа имени перечисления для добавления события - удаление поля
 	 */
 	private static final String DELETE_EVENT = "DELETION";
+	
 	/**
 	 * Константа имени перечисления для добавления события - просмотр поля
 	 */

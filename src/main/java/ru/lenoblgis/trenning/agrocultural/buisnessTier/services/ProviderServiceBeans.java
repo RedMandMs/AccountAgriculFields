@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan(basePackages = "ru.lenoblgis.trenning.agrocultural.buisnessTier.services")
-public class ProviderBeans {
+public class ProviderServiceBeans {
 	 
     @Bean
     OwnerService getOwnerService() {

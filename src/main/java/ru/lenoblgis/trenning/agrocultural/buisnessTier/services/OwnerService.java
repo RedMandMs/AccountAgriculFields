@@ -4,13 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.stereotype.Component;
 
 import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.AdminSpringDAO;
 import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.DAO;
 import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner;
 import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.organization.Organization;
 
-
+@Component("organizationService")
 public class OwnerService {
 
 	/**
