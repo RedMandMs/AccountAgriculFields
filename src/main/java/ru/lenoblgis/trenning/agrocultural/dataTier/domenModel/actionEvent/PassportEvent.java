@@ -88,8 +88,8 @@ public class PassportEvent {
 	 * @param dao - DAO создающий данное событие (нужен для считывания из БД автора события)
 	 */
 	public PassportEvent(Passport passport, String eventType, DAO dao){
-		setPassportandAothor(passport, dao);
 		setType(TypeEvent.valueOf(eventType));
+		setPassportandAothor(passport, dao);
 	}
 	
 	/**
