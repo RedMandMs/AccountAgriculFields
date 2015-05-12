@@ -21,11 +21,8 @@ public class MainTestWithoutBack {
 		/*UserSpringDAO userDao = new UserSpringDAO();*/
 		AdminSpringDAO adminDao = new AdminSpringDAO();
 		
-		Owner newOwner = new Organization("LenOblGis3", 12345, "Hi");		
-		adminDao.reviewOwner(9);
-		System.out.println("Hi\1");
-		adminDao.deleteOwner(9);
-		System.out.println("Hi\2");
+		Owner newOwner = new Organization("LenOblGis2", 1, "Hi");		
+		adminDao.createOwner(newOwner);;
 	}
 	
 	/**
@@ -36,7 +33,7 @@ public class MainTestWithoutBack {
 	public void testCreatePassport(){
 		AdminSpringDAO adminDao = new AdminSpringDAO();
 		
-		Passport newPassport = new Passport(9, RegionField.PRIZEMSK.getRegion(), "20", 30, TypeField.COLLECTIVE_FARM.getType(), "Тест создания пасспорта");
+		Passport newPassport = new Passport(8, RegionField.PRIZEMSK.getRegion(), "21", 30, TypeField.COLLECTIVE_FARM.getType(), "Тест создания пасспорта");
 		adminDao.createPassport(newPassport);
 		
 	}
@@ -45,7 +42,7 @@ public class MainTestWithoutBack {
 	public void testReviewPassport(){
 		AdminSpringDAO adminDao = new AdminSpringDAO();
 		
-		adminDao.reviewPassport(16);		
+		adminDao.reviewPassport(12);		
 	}
 
 }

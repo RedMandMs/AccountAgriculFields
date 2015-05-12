@@ -4,18 +4,22 @@ import java.util.Map;
 
 public class SQLServerQueries implements SQLQueries {
 
+	public final static String NAME_ORG_TABLE = "organization_table";
+	public final static String NAME_FIELD_TABLE = "field_table";
+	public final static String NAME_EVENT_TABLE = "event_passport_table";
+	
 	/**
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#createOwner()
 	 */
 	public String createOwner() {
-		return "INSERT INTO organization_table(name, inn, address_org) VALUES(?,?,?)";
+		return "INSERT INTO " + NAME_ORG_TABLE + "(name, inn, address_org) VALUES(?,?,?)";
 	}
 
 	/**
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#deleteOwner()
 	 */
 	public String deleteOwner() {
-		return "DELETE FROM organization_table "
+		return "DELETE FROM " + NAME_ORG_TABLE
 				+ " WHERE (id = ?)";
 	}
 
@@ -23,7 +27,7 @@ public class SQLServerQueries implements SQLQueries {
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#editOwner(java.util.Map)
 	 */
 	public String editOwner() {
-		return "UPDATE organization_table "
+		return "UPDATE " + NAME_ORG_TABLE
 				+ " SET "
 				+ " name = ? , "
 				+ " inn = ? , "
@@ -36,7 +40,7 @@ public class SQLServerQueries implements SQLQueries {
 	 */
 	public String reviewOwner() {
 		return "SELECT * "
-				+ " FROM organization_table "
+				+ " FROM " + NAME_ORG_TABLE
 				+ " WHERE (id = ?)";
 	}
 
@@ -44,14 +48,14 @@ public class SQLServerQueries implements SQLQueries {
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#createPassport()
 	 */
 	public String createPassport() {
-		return "INSERT INTO field_table(id_organization, region, cadastr_number, area, type_field, comment) VALUES(?,?,?,?,?,?)";
+		return "INSERT INTO " + NAME_FIELD_TABLE + "(id_organization, region, cadastr_number, area, type_field, comment) VALUES(?,?,?,?,?,?)";
 	}
 
 	/**
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#deletePassport()
 	 */
 	public String deletePassport() {
-		return "DELETE FROM field_table "
+		return "DELETE FROM " + NAME_FIELD_TABLE
 				+ " WHERE (id = ?); ";
 	}
 
@@ -60,7 +64,7 @@ public class SQLServerQueries implements SQLQueries {
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#editPassport(java.util.Map)
 	 */
 	public String editPassport() {
-		return "UPDATE field_table "
+		return "UPDATE " + NAME_FIELD_TABLE
 				+ " SET "
 				+ " id_organization = ?, "
 				+ " region = ?, "
@@ -76,7 +80,7 @@ public class SQLServerQueries implements SQLQueries {
 	 */
 	public String reviewPassport() {
 		return "SELECT * "
-				+ " FROM field_table "
+				+ " FROM " + NAME_FIELD_TABLE
 				+ " WHERE (id = ?);";
 	}
 
@@ -85,14 +89,14 @@ public class SQLServerQueries implements SQLQueries {
 	 */
 	public String reviewAllPassports() {
 		return "SELECT * "
-				+ " FROM field_table ";
+				+ " FROM " + NAME_FIELD_TABLE;
 	}
 
 	/**
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#findPassports(java.util.Map)
 	 */
 	public String findPassports(Map<String, String> info) {
-		String query = "SELECT * FROM field_table WHERE (";
+		String query = "SELECT * FROM " + NAME_FIELD_TABLE + " WHERE (";
 		String condition = "";
 		
 		if(info.containsKey("id")) condition = condition + "id = " + Integer.parseInt(info.get("id"));
@@ -113,35 +117,35 @@ public class SQLServerQueries implements SQLQueries {
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#createPassportEvent()
 	 */
 	public String createPassportEvent() {
-		return "INSERT INTO event_passport_table(id_passport, id_organization, message_event, date_time_event, type_event) VALUES(?,?,?,GETDATE(),?);";
+		return "INSERT INTO " + NAME_EVENT_TABLE + "(id_passport, id_organization, message_event, date_time_event, type_event) VALUES(?,?,?,GETDATE(),?);";
 	}
 	
 	/**
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#createPassportEvent()
 	 */
 	public String deletePassportEvent() {
-		return "DELETE FROM event_passport_table WHERE id = ?;";
+		return "DELETE FROM " + NAME_EVENT_TABLE + " WHERE id = ?;";
 	}
 
 	/**
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#reviewAllPassportEvent()
 	 */
 	public String reviewAllPassportEvent() {
-		return "SELECT * FROM event_passport_table";
+		return "SELECT * FROM " + NAME_EVENT_TABLE;
 	}
 
 	/**
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#reviwAllOwnerPassportEvent()
 	 */
 	public String reviwAllOwnerPassportEvent() {
-		return "SELECT * FROM event_passport_table WHERE id_organization = ?;";
+		return "SELECT * FROM " + NAME_EVENT_TABLE + " WHERE id_organization = ?;";
 	}
 
 	/**
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#getMAXidPassportByOwner()
 	 */
 	public String getMAXidPassportByOwner(){
-		return "SELECT MAX(id) AS maxId FROM field_table WHERE id_organization = ?;";
+		return "SELECT MAX(id) AS maxId FROM " + NAME_FIELD_TABLE + " WHERE id_organization = ?;";
 	}
 	
 }
