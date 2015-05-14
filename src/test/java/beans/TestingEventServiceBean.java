@@ -23,6 +23,7 @@ public class TestingEventServiceBean {
 	 * “естирование просмотра всех событий в системе
 	 */
 	@Test
+	@Ignore
 	public void testReviewAllEvents(){
 		ApplicationContext context = new AnnotationConfigApplicationContext(ProviderServiceBeans.class);
         EventService eventService = (EventService) context.getBean("eventService");
