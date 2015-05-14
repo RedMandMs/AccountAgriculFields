@@ -9,8 +9,8 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import ru.lenoblgis.trenning.agrocultural.buisnessTier.configs.ProviderServiceBeans;
 import ru.lenoblgis.trenning.agrocultural.buisnessTier.services.OwnerService;
+import ru.lenoblgis.trenning.agrocultural.presentationTier.configs.WebConfig;
 
 public class TestingOwnerBean {
 
@@ -20,7 +20,7 @@ public class TestingOwnerBean {
 	@Test
 	@Ignore
 	public void createOwner(){
-		ApplicationContext context = new AnnotationConfigApplicationContext(ProviderServiceBeans.class);
+		ApplicationContext context = new AnnotationConfigApplicationContext(WebConfig.class);
         OwnerService ownerService = (OwnerService) context.getBean("organizationService");
         Map<String,String> info = new HashMap<String, String>();
         info.put("name", "LenOblGis6");
@@ -37,7 +37,7 @@ public class TestingOwnerBean {
 	@Test
 	@Ignore
 	public void testEditOwner() {
-		ApplicationContext context = new AnnotationConfigApplicationContext(ProviderServiceBeans.class);
+		ApplicationContext context = new AnnotationConfigApplicationContext(WebConfig.class);
         OwnerService ownerService = (OwnerService) context.getBean("organizationService");
         Map<String,String> info = new HashMap<String, String>();        
         info.put("id", "24");
@@ -57,7 +57,7 @@ public class TestingOwnerBean {
 	@Test
 	@Ignore
 	public void testDeleteOwner() {
-		ApplicationContext context = new AnnotationConfigApplicationContext(ProviderServiceBeans.class);
+		ApplicationContext context = new AnnotationConfigApplicationContext(WebConfig.class);
         OwnerService ownerService = (OwnerService) context.getBean("organizationService");
         Map<String,String> info = ownerService.deleteOwner(26);
         Assert.assertEquals("false", info.get("success"));
