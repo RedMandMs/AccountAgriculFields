@@ -4,12 +4,10 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java/sqlTesting"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
         <property name="java-output-path" value="/AgriculturalPassports/target/classes"/>
-        <property name="context-root" value="AgriculturalPassports"/>
+        <property name="context-root" value="introduse"/>
     </wb-module>
 </project-modules>
