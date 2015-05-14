@@ -7,12 +7,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class WelcomeController {
-    
 	
 	
 	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
     public String printWelcome(ModelMap model) {
-        model.addAttribute("message", "Spring 3 MVC - Hello World");
+        model.addAttribute("message", "Complite!!!");
         return "welcome";
 	}
 }

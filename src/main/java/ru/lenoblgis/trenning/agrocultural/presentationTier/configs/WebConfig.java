@@ -15,18 +15,18 @@ import ru.lenoblgis.trenning.agrocultural.buisnessTier.services.PassportService;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "ru.lenoblgis.trenning.agrocultural.buisnessTier.services")
+@ComponentScan(basePackages = "ru.lenoblgis.trenning.agrocultural")
 public class WebConfig extends WebMvcConfigurerAdapter{
 
 	@Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/WEB-INF/views/**").addResourceLocations("/views/");
+        registry.addResourceHandler("/views/**").addResourceLocations("/views/");
     }
 
     @Bean
     public InternalResourceViewResolver setupViewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setPrefix("/src/main/webapp/views/");
+        resolver.setPrefix("/views/");
         resolver.setSuffix(".jsp");
         resolver.setViewClass(JstlView.class);
 
