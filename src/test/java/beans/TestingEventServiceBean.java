@@ -10,7 +10,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import ru.lenoblgis.trenning.agrocultural.buisnessTier.services.EventService;
-import ru.lenoblgis.trenning.agrocultural.presentationTier.configs.WebConfig;
+import ru.lenoblgis.trenning.agrocultural.presentationTier.cinfig.WebAppConfig;
 
 /**
  * Тестирование бина сервиса событий (EventService)
@@ -25,7 +25,7 @@ public class TestingEventServiceBean {
 	@Test
 	@Ignore
 	public void testReviewAllEvents(){
-		ApplicationContext context = new AnnotationConfigApplicationContext(WebConfig.class);
+		ApplicationContext context = new AnnotationConfigApplicationContext(WebAppConfig.class);
         EventService eventService = (EventService) context.getBean("eventService");
         List<Map<String, String>> events = eventService.getAllEvents();
         Assert.assertEquals(26, events.size());
@@ -37,7 +37,7 @@ public class TestingEventServiceBean {
 	@Test
 	@Ignore
 	public void testReviewAllOwnerEvents(){
-		ApplicationContext context = new AnnotationConfigApplicationContext(WebConfig.class);
+		ApplicationContext context = new AnnotationConfigApplicationContext(WebAppConfig.class);
         EventService eventService = (EventService) context.getBean("eventService");
         List<Map<String, String>> events = eventService.getAllOwnerEvents(24);
         Assert.assertEquals(12, events.size());

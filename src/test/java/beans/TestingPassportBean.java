@@ -10,7 +10,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import ru.lenoblgis.trenning.agrocultural.buisnessTier.services.PassportService;
-import ru.lenoblgis.trenning.agrocultural.presentationTier.configs.WebConfig;
+import ru.lenoblgis.trenning.agrocultural.presentationTier.cinfig.WebAppConfig;
 
 
 public class TestingPassportBean {
@@ -21,7 +21,7 @@ public class TestingPassportBean {
 	@Test
 	@Ignore
 	public void testPassportServiceBean(){
-		ApplicationContext context = new AnnotationConfigApplicationContext(WebConfig.class);
+		ApplicationContext context = new AnnotationConfigApplicationContext(WebAppConfig.class);
         PassportService passportService = (PassportService) context.getBean("passportService");
         Map<String, String> passportInfo = new HashMap<String, String>();
 		passportInfo.put("id_organization", "8");
@@ -39,7 +39,7 @@ public class TestingPassportBean {
 	@Test
 	@Ignore
 	public void testReviewPassport() {
-		ApplicationContext context = new AnnotationConfigApplicationContext(WebConfig.class);
+		ApplicationContext context = new AnnotationConfigApplicationContext(WebAppConfig.class);
         PassportService passportService = (PassportService) context.getBean("passportService");
         Map<String, String> passportInfo = passportService.reviewPassport(37);
         Assert.assertEquals("22", passportInfo.get("cadastr_number"));
@@ -52,7 +52,7 @@ public class TestingPassportBean {
 	@Test
 	@Ignore
 	public void testEditPassport(){
-		ApplicationContext context = new AnnotationConfigApplicationContext(WebConfig.class);
+		ApplicationContext context = new AnnotationConfigApplicationContext(WebAppConfig.class);
         PassportService passportService = (PassportService) context.getBean("passportService");
         Map<String, String> passportInfo = new HashMap<String, String>();
 		passportInfo.put("id", "37");
@@ -71,7 +71,7 @@ public class TestingPassportBean {
 	@Test
 	@Ignore
 	public void testReviewAllPassports(){
-		ApplicationContext context = new AnnotationConfigApplicationContext(WebConfig.class);
+		ApplicationContext context = new AnnotationConfigApplicationContext(WebAppConfig.class);
         PassportService passportService = (PassportService) context.getBean("passportService");
         List<Map<String, String>> passports = passportService.reviewAllPassport();
         Assert.assertEquals(passports.size(), 24);
@@ -83,7 +83,7 @@ public class TestingPassportBean {
 	@Test
 	@Ignore
 	public void testFindPassports(){
-		ApplicationContext context = new AnnotationConfigApplicationContext(WebConfig.class);
+		ApplicationContext context = new AnnotationConfigApplicationContext(WebAppConfig.class);
         PassportService passportService = (PassportService) context.getBean("passportService");
         Map<String, String> passportInfo = new HashMap<String, String>();
 		passportInfo.put("id_organization", "8");
@@ -97,7 +97,7 @@ public class TestingPassportBean {
 	@Test
 	@Ignore
 	public void testDeletePassport(){
-		ApplicationContext context = new AnnotationConfigApplicationContext(WebConfig.class);
+		ApplicationContext context = new AnnotationConfigApplicationContext(WebAppConfig.class);
         PassportService passportService = (PassportService) context.getBean("passportService");
         Map<String,String> resultInfo = passportService.deletePassport(38);
         Assert.assertEquals("false", resultInfo.get("success"));

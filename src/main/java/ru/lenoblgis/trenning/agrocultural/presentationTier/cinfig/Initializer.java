@@ -1,4 +1,4 @@
-package ru.lenoblgis.trenning.agrocultural.presentationTier.configs;
+package ru.lenoblgis.trenning.agrocultural.presentationTier.cinfig;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -11,22 +11,23 @@ import org.springframework.web.servlet.DispatcherServlet;
 
 public class Initializer implements WebApplicationInitializer {
 
+	 // Указываем имя нашему Servlet Dispatcher для мапинга
     private static final String DISPATCHER_SERVLET_NAME = "dispatcher";
-
-	public void onStartup(ServletContext servletContext)
-			throws ServletException {
+ 
+    @Override
+    public void onStartup(ServletContext servletContext) throws ServletException {
         AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
-        ctx.register(WebConfig.class);
+ 
+        // Регистрируем в контексте конфигурационный класс, который мы создадим ниже
+        ctx.register(WebAppConfig.class);
         servletContext.addListener(new ContextLoaderListener(ctx));
-
+ 
         ctx.setServletContext(servletContext);
-
-        ServletRegistration.Dynamic servlet = servletContext.addServlet(DISPATCHER_SERVLET_NAME, new DispatcherServlet(ctx));
+ 
+        ServletRegistration.Dynamic servlet = servletContext.addServlet(DISPATCHER_SERVLET_NAME, 
+                                                                        new DispatcherServlet(ctx));
         servlet.addMapping("/");
         servlet.setLoadOnStartup(1);
-		
-	}
-
-
+    }
 
 }
