@@ -12,8 +12,12 @@ import org.springframework.web.servlet.DispatcherServlet;
 public class Initializer implements WebApplicationInitializer {
 
 	 // ”казываем им€ нашему Servlet Dispatcher дл€ мапинга
-    private static final String DISPATCHER_SERVLET_NAME = "dispatcher";
+    private static final String DISPATCHER_SERVLET_NAME = "dispatcherAgrocultural";
  
+
+    /*
+     * * @see org.springframework.web.WebApplicationInitializer#onStartup(javax.servlet.ServletContext)
+     */
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();

@@ -9,6 +9,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+import ru.lenoblgis.trenning.agrocultural.buisnessTier.services.EventService;
+import ru.lenoblgis.trenning.agrocultural.buisnessTier.services.OwnerService;
+import ru.lenoblgis.trenning.agrocultural.buisnessTier.services.PassportService;
+
 @Configuration
 @EnableWebMvc
 @ComponentScan("ru.lenoblgis.trenning.agrocultural.presentationTier.controllers")
@@ -30,6 +34,33 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
         resolver.setViewClass(JstlView.class);
  
         return resolver;
+    }
+    
+    /**
+     * Получение бина сервиса работы с организациями
+     * @return - сервис рабыты с организациями
+     */
+    @Bean
+    OwnerService getOwnerService() {
+        return new OwnerService();
+    }
+    
+    /**
+     * Получение бина сервиса работы с паспортами полей
+     * @return - срвис работы с паспортами полей
+     */
+    @Bean
+    PassportService getPassportService(){
+    	return new PassportService();
+    }
+    
+    /**
+     * Получение бина сервиса работы с журналом событий
+     * @return - срвис работы с журналом событий
+     */
+    @Bean
+    EventService getEventService(){
+    	return new EventService();
     }
  
 }

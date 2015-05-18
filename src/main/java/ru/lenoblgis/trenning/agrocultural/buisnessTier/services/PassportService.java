@@ -133,7 +133,9 @@ public class PassportService {
 	
 	/**
 	 * Получение реестра паспортов
-	 * @return - список с информацией о каждом пасспорте("id" - id пасспорта, "id_organization" - id организации, region - регион, cadastr_number - кадастровый номер, area - площадь, type_field - тип поля, comment - комментарий)
+	 * @return - список с информацией о каждом пасспорте("id" - id пасспорта, "id_organization" - id организации, 
+	 * 													region - регион, cadastr_number - кадастровый номер, 
+	 * 													area - площадь, type_field - тип поля, comment - комментарий)
 	 */
 	public List<Map<String, String>> reviewAllPassport() {
 		List<Map<String,String>> listPasportsInfo = new ArrayList<Map<String,String>>();
