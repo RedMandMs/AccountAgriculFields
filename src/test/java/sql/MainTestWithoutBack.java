@@ -22,7 +22,7 @@ public class MainTestWithoutBack {
 		/*UserSpringDAO userDao = new UserSpringDAO();*/
 		AdminSpringDAO adminDao = new AdminSpringDAO();
 		
-		Owner newOwner = new Organization("LenOblGis2", 1, "Hi");		
+		Owner newOwner = new Organization("LenOblGis", 1, "Hi");		
 		adminDao.createOwner(newOwner);;
 	}
 	

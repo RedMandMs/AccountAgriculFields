@@ -11,8 +11,10 @@ import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueri
 import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.rowMappers.EventRowMapper;
 import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.rowMappers.OrganizationRowMapper;
 import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.rowMappers.PassportRowMapper;
+import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.rowMappers.UserRowMapper;
 import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.actionEvent.PassportEvent;
 import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner;
+import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.User;
 import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.organization.Organization;
 import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.passport.Passport;
 
@@ -71,6 +73,10 @@ public class AdminSpringDAO implements DAO  {
 	 * Объект, отображающий событие в программный объект из БД
 	 */
 	EventRowMapper eventRowMapper = new EventRowMapper();
+	/**
+	 * Объект, отображающий пользователя в программный объект из БД
+	 */
+	UserRowMapper userRowMapper = new UserRowMapper();
 	
 	/**
 	 * Подключение DataSource к базе данных и создание jdbcTemplate
@@ -239,6 +245,30 @@ public class AdminSpringDAO implements DAO  {
 	 */
 	private int getPassportwithMaxId(int idOwner) {
 		return jdbcTemplate.queryForInt(sqlQueries.getMAXidPassportByOwner(), new Object[]{idOwner});
+	}
+
+	/*
+	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.DAO#authorization(java.lang.String, java.lang.String)
+	 */
+	@Override
+	public User authorization(String login, String password) {
+		Object [] values = new Object[]{login, password};
+		List<User> user = jdbcTemplate.query(sqlQueries.registration(), values, userRowMapper);
+		if(user.isEmpty()){
+			return null;
+		}else{
+			return user.get(0);
+		}
+	}
+
+	/**
+	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.DAO#registration(java.lang.String, java.lang.String)
+	 */
+	@Override
+	public User registration(String login, String password, int idOrganization) {
+		Object [] values = new Object[]{login, password, idOrganization};
+		jdbcTemplate.update(sqlQueries.registration(), values);
+		return authorization(login, password);
 	}
 
 }

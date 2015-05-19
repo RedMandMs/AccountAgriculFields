@@ -7,6 +7,7 @@ public class SQLServerQueries implements SQLQueries {
 	public final static String NAME_ORG_TABLE = "organization_table";
 	public final static String NAME_FIELD_TABLE = "field_table";
 	public final static String NAME_EVENT_TABLE = "event_passport_table";
+	public final static String NAME_USER_TABLE = "users_table";
 	
 	/**
 	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries.SQLQueries#createOwner()
@@ -146,6 +147,16 @@ public class SQLServerQueries implements SQLQueries {
 	 */
 	public String getMAXidPassportByOwner(){
 		return "SELECT MAX(id) AS maxId FROM " + NAME_FIELD_TABLE + " WHERE id_organization = ?;";
+	}
+
+	@Override
+	public String authorization() {
+		return "SELECT * FROM " + NAME_USER_TABLE + "WHERE user_login = ? AND user_password = ?;";
+	}
+
+	@Override
+	public String registration() {
+		return "INSERT INTO " + NAME_USER_TABLE + " (user_login, user_password, id_organization) VALUES(?, ?, ?)";
 	}
 	
 }

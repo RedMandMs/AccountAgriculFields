@@ -86,4 +86,15 @@ public interface SQLQueries extends Serializable {
 	 */
 	public String getMAXidPassportByOwner();
 	
+	/**
+	 * Сформировать запрос для проверки совпадения логина и пароля пользователя (авторизация)
+	 * @return - запрос
+	 */
+	public String authorization();
+	
+	/**
+	 * Сформировать запрос для создания нового пользователя системы (регистрация)
+	 * @return - запрос
+	 */
+	public String registration();
 }

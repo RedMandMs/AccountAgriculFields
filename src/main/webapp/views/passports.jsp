@@ -15,7 +15,6 @@
 	<table>
 	  <c:forEach var="info" items="${eventService.getAllOwnerEvents(id_organization)}">
 		  <tr>
-		  	<td>GOOOO</td>
 		    <td>${info.get("id")}</td>
 		    <td>${info.get("id_passport")}</td>
 		    <td>${info.get("id_organization")}</td>

@@ -13,6 +13,7 @@ import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.rowMappe
 import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.rowMappers.PassportRowMapper;
 import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.actionEvent.PassportEvent;
 import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner;
+import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.User;
 import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.organization.Organization;
 import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.passport.Passport;
 
@@ -235,4 +236,21 @@ public class UserSpringDAO implements DAO{
 		return jdbcTemplate.queryForInt(sqlQueries.getMAXidPassportByOwner(), new Object[]{idOwner});
 	}
 	
+	/*
+	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.DAO#authorization(java.lang.String, java.lang.String)
+	 */
+	@Override
+	public User authorization(String login, String password) {
+		//Не для пользовательского DAO
+		return null;
+	}
+
+	/**
+	 * @see ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.DAO#registration(java.lang.String, java.lang.String)
+	 */
+	@Override
+	public User registration(String login, String password, int idOrganization) {
+		//Не для пользовательского DAO
+		return null;
+	}
 }

@@ -6,6 +6,7 @@ import java.util.Map;
 
 import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.actionEvent.PassportEvent;
 import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner;
+import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.User;
 import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.passport.Passport;
 
 public interface DAO extends Serializable{
@@ -71,7 +72,7 @@ public interface DAO extends Serializable{
 	 * Удаление записи события из БД
 	 * @param idEvent - id удаляемого события
 	 */
-	public void deletePassportEvent(int idEvent);
+	void deletePassportEvent(int idEvent);
 	
 	/**
 	 * Просмотреть все записи из журнала событий в БД, принадлежащие одному владельцу
@@ -79,5 +80,21 @@ public interface DAO extends Serializable{
 	 * @return
 	 */
 	List<PassportEvent> reviewAllOwnerEvents(int idOwner);
+	
+	/**
+	 * Авторизация пользователя
+	 * @param login - логин пользователя
+	 * @param password - пароль пользователя
+	 * @return - объект, представляющий авторизированного пользователя
+	 */
+	User authorization(String login, String password);
+	
+	/**
+	 * Авторизация пользователя
+	 * @param login - логин пользователя
+	 * @param password - пароль пользователя
+	 * @return - объект, представляющий нового пользователя, если такого нету - null
+	 */
+	User registration(String login, String password, int idOrganization);
 	
 }
