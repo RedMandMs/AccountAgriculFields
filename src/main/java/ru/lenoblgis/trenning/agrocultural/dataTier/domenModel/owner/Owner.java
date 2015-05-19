@@ -1,7 +1,9 @@
 package ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner;
 
+import java.io.Serializable;
 
-public interface Owner {
+
+public interface Owner extends Serializable{
 
 	/**
 	 * Получить id владельца

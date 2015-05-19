@@ -1,6 +1,8 @@
 package ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.passport;
 
-public enum TypeField {
+import java.io.Serializable;
+
+public enum TypeField implements Serializable{
 	
 	FARM("‘ермерское хоз€йство"),
 	AGROCULTURAL("—ельскохоз€йственное производство"),

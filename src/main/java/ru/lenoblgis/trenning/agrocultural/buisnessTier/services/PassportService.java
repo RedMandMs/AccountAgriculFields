@@ -1,5 +1,6 @@
 package ru.lenoblgis.trenning.agrocultural.buisnessTier.services;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +15,7 @@ import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.DAO;
 import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.passport.Passport;
 
 @Component("passportService")
-public class PassportService {
+public class PassportService implements Serializable {
 	
 	/**
 	 * DAO для работы с базой данных

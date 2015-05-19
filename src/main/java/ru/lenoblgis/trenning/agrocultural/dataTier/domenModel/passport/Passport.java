@@ -1,7 +1,9 @@
 package ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.passport;
 
+import java.io.Serializable;
 
-public class Passport {
+
+public class Passport implements Serializable {
 	
 	/**
 	 * Конструктор для отображения паспорта из БД

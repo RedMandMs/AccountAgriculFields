@@ -1,8 +1,9 @@
 package ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.SQLQueries;
 
+import java.io.Serializable;
 import java.util.Map;
 
-public interface SQLQueries {
+public interface SQLQueries extends Serializable {
 
 	/**
 	 * Создание владельца

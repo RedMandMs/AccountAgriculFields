@@ -1,5 +1,7 @@
 package ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.actionEvent;
 
+import java.io.Serializable;
+
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
@@ -8,7 +10,7 @@ import ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices.DAO;
 import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner;
 import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.passport.Passport;
 
-public class PassportEvent {
+public class PassportEvent implements Serializable{
 	
 	/**
 	 * Id события

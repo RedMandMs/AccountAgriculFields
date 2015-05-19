@@ -1,11 +1,13 @@
 package ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.passport;
 
+import java.io.Serializable;
+
 /**
  * Перечисление регионов
  * @author Vilgodskiy
  *
  */
-public enum RegionField {
+public enum RegionField implements Serializable{
 	
 	UNKNOWN("Неизвестный"),
 	VSEVOLOGSK("Всеволожский р-н"),

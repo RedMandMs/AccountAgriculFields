@@ -1,5 +1,6 @@
 package ru.lenoblgis.trenning.agrocultural.buisnessTier.services;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,7 +13,7 @@ import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner;
 import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.organization.Organization;
 
 @Component("organizationService")
-public class OwnerService {
+public class OwnerService implements Serializable{
 
 	/**
 	 * DAO для работы с базой данных

@@ -1,6 +1,8 @@
 package ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.actionEvent;
 
-public enum TypeEvent {
+import java.io.Serializable;
+
+public enum TypeEvent implements Serializable{
 	
 	UNKNOWN("Неизвестно", "Неизвестно что сделало"),
 	ADDITION("Добавление поля", "Добавила"),

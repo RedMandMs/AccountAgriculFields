@@ -1,5 +1,6 @@
 package ru.lenoblgis.trenning.agrocultural.dataTier.accessTODataServices;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
@@ -7,7 +8,7 @@ import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.actionEvent.Passpo
 import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.owner.Owner;
 import ru.lenoblgis.trenning.agrocultural.dataTier.domenModel.passport.Passport;
 
-public interface DAO {
+public interface DAO extends Serializable{
 	
 	/**
 	 * Создание владельца

@@ -30,5 +30,8 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Projects/introduction/Agricultural/lib/javax.servlet.jsp.jstl-api-1.2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Projects/library/jstl.jar"/>
+	<classpathentry kind="lib" path="C:/Projects/library/standard.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
