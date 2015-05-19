@@ -8,12 +8,12 @@
 <title>Information about Passports</title>
 </head>
 <body>
-	<jsp:useBean id="passportService" class="ru.lenoblgis.trenning.agrocultural.buisnessTier.services.PassportService"
+	<jsp:useBean id="eventService" class="ru.lenoblgis.trenning.agrocultural.buisnessTier.services.EventService"
 	   scope="session"/>
 	   
 	<H1>HELLO!!!</H1>
 	<table>
-	  <c:forEach var="info" items="${infoPassports}">
+	  <c:forEach var="info" items="${eventService.getAllEvents()}">
 		  <tr>
 		  	<td>GOOOO</td>
 		    <td>${info.get("id")}</td>
