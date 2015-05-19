@@ -13,7 +13,7 @@
 	   
 	<H1>HELLO!!!</H1>
 	<table>
-	  <c:forEach var="info" items="${eventService.getAllEvents()}">
+	  <c:forEach var="info" items="${eventService.getAllOwnerEvents(id_organization)}">
 		  <tr>
 		  	<td>GOOOO</td>
 		    <td>${info.get("id")}</td>

@@ -10,18 +10,22 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Controller
-public class GoodbuyController {
-
+public class EventControllers {
 	
-	@RequestMapping(value = "/goodbuy", method = RequestMethod.GET)
-    public String printWelcome(ModelMap model) {
+	@RequestMapping(value = "/passports", method = RequestMethod.GET)
+    public String printEvents(ModelMap model) {
 		
 		ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
 		HttpSession session = attr.getRequest().getSession(true); // true == allow create
+	    
+		int id = (int) session.getAttribute("id_organization");
 		
 		
-		session.setAttribute("id_organization", 24);
-        model.addAttribute("message", "Goodbuy, my friend");
-        return "goodbuy";
+		/*EventService passportService = new EventService();
+        List<Map<String, String>> infoPassports = passportService.getAllEvents();
+        model.addAttribute("infoPassports", infoPassports);*/
+		
+        return "passports";
 	}
+
 }
